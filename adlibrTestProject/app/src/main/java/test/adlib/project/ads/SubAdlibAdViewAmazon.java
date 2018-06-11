@@ -7,6 +7,12 @@
 
 package test.adlib.project.ads;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.util.AttributeSet;
+import android.view.Gravity;
+
 import com.amazon.device.ads.Ad;
 import com.amazon.device.ads.AdError;
 import com.amazon.device.ads.AdLayout;
@@ -15,12 +21,6 @@ import com.amazon.device.ads.AdProperties;
 import com.amazon.device.ads.AdRegistration;
 import com.amazon.device.ads.AdSize;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
-
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.util.AttributeSet;
-import android.view.Gravity;
 
 /*
  AndroidManifest.xml 에 아래 내용을 추가해주세요.

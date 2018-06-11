@@ -23,7 +23,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
     <!-- 플랫폼에 따라 권한을 추가하시기 바랍니다. (애드립의 필수는 아닙니다.) -->
     <application
         android:name="android.support.multidex.MultiDexApplication"
@@ -61,6 +61,10 @@
         <!-- T-AD -->
 
         <!-- ADMOB - Google Play 버전을 위한 선언입니다. -->
+
+        <meta-data android:name="com.google.android.gms.version"
+                   android:value="@integer/google_play_services_version"/>
+
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
@@ -218,24 +222,6 @@
         <activity
             android:name=".interstitial.AdlibIntersDynamicActivity"
             android:screenOrientation="portrait"/>
-
-        <activity
-            android:name=".nativead.AdlibnativeRecyclerViewActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".nativead.AdlibNativeSampleFeedActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".nativead.AdlibNativeSampleSongActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name=".etc.AdlibIconAdActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".etc.AdlibSampleActivity"
-            android:screenOrientation="portrait">
-        </activity>
     </application>
 
 </manifest>

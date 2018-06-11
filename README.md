@@ -10,6 +10,9 @@
 
 ## SDK Version History
 
+SDK version 5.0.0.0 (2018.06.12)
+> sdk v5.000 Release <br>
+
 SDK version  4.5.1.8 (2018.02.21)
 > 마이너 버그 수정 <br>
 

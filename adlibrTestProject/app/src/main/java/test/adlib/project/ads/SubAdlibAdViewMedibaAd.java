@@ -11,15 +11,15 @@
 
 package test.adlib.project.ads;
 
-import mediba.ad.sdk.android.openx.MasAdListener;
-import mediba.ad.sdk.android.openx.MasAdView;
-
-import com.mocoplex.adlib.SubAdlibAdViewCore;
-
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.Gravity;
+
+import com.mocoplex.adlib.SubAdlibAdViewCore;
+
+import mediba.ad.sdk.android.openx.MasAdListener;
+import mediba.ad.sdk.android.openx.MasAdView;
 
 /*
  AndroidManifest.xml 에 아래 내용을 추가해주세요.

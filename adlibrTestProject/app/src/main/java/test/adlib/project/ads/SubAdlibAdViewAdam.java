@@ -14,11 +14,13 @@ package test.adlib.project.ads;
 import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.kakao.adfit.ads.AdListener;
 import com.kakao.adfit.ads.ba.BannerAdView;
+import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
 
 /*
@@ -100,7 +102,13 @@ public class SubAdlibAdViewAdam extends SubAdlibAdViewCore {
 
         queryAd();
 
-        ad.loadAd();
+        // AdfitSDK-3.0.2 이상 광고 요청 및 노출 오류로 추가
+        ad.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ad.loadAd();
+            }
+        }, 50);
 
         // 3초 이상 리스너 응답이 없으면 다음 플랫폼으로 넘어갑니다.
         Handler adHandler = new Handler();
@@ -153,5 +161,12 @@ public class SubAdlibAdViewAdam extends SubAdlibAdViewCore {
         }
 
         super.onDestroy();
+    }
+
+    public static void loadInterstitial(Context ctx, final Handler h, final String adlibKey) {
+        // 전면 광고 미지원
+        if (h != null) {
+            h.sendMessage(Message.obtain(h, AdlibManager.DID_ERROR, "ADAM"));
+        }
     }
 }

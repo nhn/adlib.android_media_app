@@ -29,7 +29,6 @@ AndroidManifest.xml 에 아래 내용을 추가해주세요.
 <activity android:name="com.tnkfactory.ad.AdMediaActivity" android:screenOrientation="landscape"/>
 */
 
-
 public class SubAdlibAdViewTNK extends SubAdlibAdViewCore {
 
 	public SubAdlibAdViewTNK(Context context) {

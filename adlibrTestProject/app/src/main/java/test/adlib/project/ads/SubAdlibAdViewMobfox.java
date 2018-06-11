@@ -37,7 +37,7 @@ public class SubAdlibAdViewMobfox extends SubAdlibAdViewCore {
     private Banner banner;
 
     // 여기에 MOBFOX ID 를 입력하세요.
-    protected String mofoxBannerID = "MOBFOX_ID";
+    protected String mofoxBannerID = "8769bb5eb962eb39170fc5d8930706a9";
     protected static String mofoxInterstitialID = "MOBFOX_INTERSTITIAL_ID";
 
     public SubAdlibAdViewMobfox(Context context) {

@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.mocoplex.adlib.AdlibManager;
 
-import test.adlib.project.AdlibTestProjectConstants;
 import test.adlib.project.R;
+import test.adlib.project.TestProjectConstants;
 
 public class AdlibIntersDynamicActivity extends Activity {
 
@@ -26,10 +26,10 @@ public class AdlibIntersDynamicActivity extends Activity {
         setContentView(R.layout.activity_adlib_inters_dynamic);
 
         // 각 애드립 액티비티에 애드립 앱 키값을 필수로 넣어주어야 합니다.
-        adlibManager = new AdlibManager(AdlibTestProjectConstants.ADLIB_API_KEY);
+        adlibManager = new AdlibManager(TestProjectConstants.ADLIB_API_KEY);
         adlibManager.onCreate(this);
         // 테스트 광고 노출로, 상용일 경우 꼭 제거해야 합니다.
-        adlibManager.setAdlibTestMode(AdlibTestProjectConstants.ADLIB_TEST_MODE);
+        adlibManager.setAdlibTestMode(TestProjectConstants.ADLIB_TEST_MODE);
     }
 
     @Override
