@@ -31,6 +31,8 @@ dependencies {
     compile 'com.android.support:support-v4:26.1.0'
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
     // Adfit
     compile(name: 'AdfitSDK-3.0.2', ext: 'aar')
