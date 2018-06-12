@@ -2,9 +2,7 @@
 <manifest
     package="test.adlib.project"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:versionCode="1"
-    android:versionName="1.0">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- overrideLibrary 의 경우 MILLENNIAL MEDIA - 광고 노출을 위해 필요한 선언입니다. -->
     <uses-sdk
@@ -14,6 +12,7 @@
     <!-- 애드립 사용을 위한 필수 권한 -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
     <!-- 애드립 사용을 위한 필수 권한 -->
 
 
@@ -23,25 +22,20 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
     <!-- 플랫폼에 따라 권한을 추가하시기 바랍니다. (애드립의 필수는 아닙니다.) -->
     <application
         android:name="android.support.multidex.MultiDexApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Black"
-        tools:replace="android:allowBackup">
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/AppTheme">
 
         <!-- 애드립 사용을 위해 꼭 추가해주세요. -->
         <activity
             android:name="com.mocoplex.adlib.AdlibDialogActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:theme="@android:style/Theme.Translucent"/>
-        <activity
-            android:name="com.mocoplex.adlib.AdlibVideoPlayer"
-            android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar"/>
         <!-- 애드립 사용을 위해 꼭 추가해주세요. -->
 
 
@@ -198,10 +192,7 @@
 
 
         <!-- 애드립 샘플 -->
-        <activity
-            android:name=".AdlibTestProjectActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Black.NoTitleBar">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
