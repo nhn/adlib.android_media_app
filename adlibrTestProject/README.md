@@ -4,22 +4,22 @@
 
 
 ## 지원 광고 플랫폼
-- adlib / adlib-house 
 - AdMixer v1.4.2
-- Adfit(Adam) v2.4.2
+- Adfit(Adam) v3.0.2
 - Admob   Google Play Version
-- Amazon  v5.8.1.1
+- Amazon  v5.8.2
 - Axonix(Mobclix) v4.4.0
 - Cauly   v3.4.15
-- FaceBook v4.23.0
-- Inmobi  v6.2.0
-- MillennialMedia v6.4.0
+- FaceBook v4.27.0
+- Inmobi  v7.0.2
 - MezzoMedia(A-plus)  v2.0(20161207)
-- Mobfox  v3.2.7
-- Mopub   v4.15
-- ShallWeAd   v1.8_20170124
-- T-ad(Syrup Ad)  v3.16
-- TNK v6.34
+- MillennialMedia v6.6.1
+- Mobfox  v3.3.0
+- Mopub   v4.19
+- ShallWeAd   v1.9_20171120
+- T-ad(Syrup Ad/Dawin Click)  v3.16.3
+- TNK v6.37
+- UPlaus AD
 
 
 ## 개발환경
@@ -37,6 +37,7 @@
 <!-- 애드립 사용을 위한 필수 -->
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+<uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
 
 <application
   android:icon="@mipmap/ic_launcher"
@@ -116,7 +117,6 @@ private void bindPlatform() {
     AdlibConfig.getInstance().bindPlatform("CAULY", "test.adlib.project.ads.SubAdlibAdViewCauly");
     AdlibConfig.getInstance().bindPlatform("FACEBOOK", "test.adlib.project.ads.SubAdlibAdViewFacebook");
     AdlibConfig.getInstance().bindPlatform("INMOBI", "test.adlib.project.ads.SubAdlibAdViewInmobi");
-    AdlibConfig.getInstance().bindPlatform("MEDIBAAD", "test.adlib.project.ads.SubAdlibAdViewMedibaAd");
     AdlibConfig.getInstance().bindPlatform("MEZZO", "test.adlib.project.ads.SubAdlibAdViewMezzo");
     AdlibConfig.getInstance().bindPlatform("MMEDIA", "test.adlib.project.ads.SubAdlibAdViewMMedia");
     AdlibConfig.getInstance().bindPlatform("MOBFOX", "test.adlib.project.ads.SubAdlibAdViewMobfox");
@@ -133,7 +133,6 @@ private void bindPlatform() {
 ### 띠 배너 연동
 
 - 애드립 기본 띠배너
-- 참고 : [띠배너 샘플 링크](./app/src/main/java/test/adlib/project/banner/README.md)
 
 ```java
 // 각 애드립 액티비티에 애드립 앱 키값을 필수로 넣어주어야 합니다.
@@ -177,7 +176,6 @@ adlibManager.setAdsContainer(R.id.ads);
 ### 전면 배너 연동
 
 - 애드립 기본 전면 배너
-- 참고 : [전면 배너 샘플 링크](./app/src/main/java/test/adlib/project/interstitial/README.md)
 
 ```java
 // 각 애드립 액티비티에 애드립 앱 키값을 필수로 넣어주어야 합니다.
@@ -267,166 +265,6 @@ adlibManager.requestAdDialog(new Handler() {
 // 종료 대화상자 광고를 노출하기 위해서 호출합니다.
 adlibManager.showAdDialog("취소", "확인", "종료하시겠습니까?");
 ```
-<br>
-
-### Native 광고
-
-<div>
-	<table style="width:100%">
-		<tbody>
-			<tr>
-				<td style="border:0;">
-					<img src="http://developer.adlibr.com/img/img_sdk_and_native1.png" width=400px>
-				</td>
-				<td class="dialog_tdata" style="border:0;">
-					<p>구현하려는 서비스의 레이아웃에 맞게 Native AD의 구성요소들을 선택적으로 사용하여 Native AD의 노출 영역을 조정할 수 있습니다. </p>
-					<dt><strong>Native AD의 구성요소</strong></dt>
-					<dd>① 아이콘</dd>
-					<dd>② 제목</dd>
-					<dd>③ 부제목</dd>
-					<dd>④ 설명</dd>
-					<dd>⑤ 이미지 또는 비디오</dd>
-					<p>※ Natvie AD 구성 요소들을 앱의 특성에 맞게 커스터마이징할 수 있습니다.<br>비디오 광고가 포함되는 경우 비디오영역이 필수적으로 노출되어야 합니다.</p>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
-
-#### 단계1. 광고 요청
-
-```java
-// 각 애드립 액티비티에 애드립 앱 키값을 필수로 넣어주어야 합니다.
-_amanager = new AdlibManager(AdlibTestProjectConstants.ADLIB_API_KEY);
-_amanager.onCreate(this);
-// 테스트 광고 노출로, 상용일 경우 꼭 제거해야 합니다.
-_amanager.setAdlibTestMode(AdlibTestProjectConstants.ADLIB_TEST_MODE);
-
-// 네이티브 광고를 받고싶다면 아래의 코드를 호출 합니다.
-// 1. 타입 : 광고 유형을 지정합니다. (ALL : 비디오와 이미지, VIDEO : 비디오만 해당, IMAGE : 이미지만 해당)
-// 2. 이벤트 리스너 : 성공과 실패를 알기 위한 리스너를 지정합니다.
-_amanager.loadNativeAd(AdlibConfig.ContentType.ALL, new AdlibNativeAdListener() {
-    @Override
-    public void onReceiveAd(AdlibNativeItem item) {
-        Log.d("ADLIB-Native", "onReceiveAd");
-
-        // 광고 정보
-        // Log.d("ADLIB-Native", i + " -> Content Type : " + item.getContentType());
-        // Log.d("ADLIB-Native", i + " -> Title : " + item.getTitle());
-        // Log.d("ADLIB-Native", i + " -> SubTitle : " + item.getSubTitle());
-        // Log.d("ADLIB-Native", i + " -> Icon Url : " + item.getIconUrl());
-        // Log.d("ADLIB-Native", i + " -> Description : " + item.getDescription());
-        // Log.d("ADLIB-Native", i + " -> GoButton Text : " + item.getBtnText());
-    }
-
-    @Override
-    public void onError(int errorCode) {
-        Log.d("ADLIB-Native", "onError ::: error code : " + errorCode);
-
-        Toast.makeText(AdlibNativeSampleFeedActivity.this, "광고수신 실패 :)", Toast.LENGTH_SHORT).show();
-    }
-});
-```
-
-#### 단계2. 광고 노출
-- AdlibNativeLayout 생성하여 광고 영역에 View를 추가 
-- 참고 : [Native 샘플 링크](./app/src/main/java/test/adlib/project/nativead/README.md)
-
-```java
-// AdlibNativeLayout
-View itemView = new AdlibNativeLayout(context, R.layout.activity_native_feed_item);
-container.addView(itemView);
-```
-
-<br>
-
-### 아이콘 광고
-- 참고 : [아이콘 광고 샘플 링크](./app/src/main/java/test/adlib/project/etc/README.md)
-
-#### 단계1. 광고 생성 및 초기화
-
-``` java
-// 광고 객체 초기화
-ad = new AdlibIconAd(this, AdlibTestProjectConstants.ADLIB_API_KEY);
-// 테스트 광고 노출로, 상용일 경우 꼭 제거해야 합니다.
-ad.setTestMode(AdlibTestProjectConstants.ADLIB_TEST_MODE);
-// 광고 위치 설정 (LEFT, RIGHT)
-ad.setAlign(GappingConstans.FloatingAlign.RIGHT);
-// 광고 이벤트 리스너 등록
-ad.setAdListener(new GappingAdListener() {
-    @Override
-    public void onReceiveAd() {
-        Log.d("ADLIBr", "[Icon] onReceiveAd ");
-    }
-
-    @Override
-    public void onFailedToReceiveAd(AdError error) {
-        Log.d("ADLIBr", "[Icon] onFailedToReceiveAd " + error.getErrorCode() + " / " + error.getErrorMessage());
-        Toast.makeText(AdlibIconAdActivity.this, "광고수신 실패 :)", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onReceivedInteraction(String data) {
-    }
-
-    @Override
-    public void onChangeStatus(AdStatus status) {
-    }
-
-    @Override
-    public void onReceiveEvent(AdEvent event) {
-    }
-});
-
-```
-
-#### 단계2. 광고 호출
-- 광고 호출 및 Activity Life Cycle에 맞게 AdlibIconAd 호출
-
-```java
-@Override
-protected void onResume() {
-    if (ad != null) {
-        ad.resumeAd();
-    }
-    super.onResume();
-}
-
-@Override
-protected void onPause() {
-    if (ad != null) {
-        ad.pauseAd();
-    }
-    super.onPause();
-}
-
-@Override
-protected void onDestroy() {
-    if (ad != null) {
-        ad.destroyAd();
-    }
-    super.onDestroy();
-}
-
-// 광고 호출
-privte void loadAd() {
-    if(ad != null) ad.loadAd();
-}
-```
-
-#### 단계3. 화면 회전 처리
-- AndroidManifest.xml 에서 android:configChanges  처리를 하는 경우
-
-```java
-@Override
-public void onConfigurationChanged(Configuration newConfig) {
-    if (ad != null) {
-        ad.reloadAd();
-    }
-    super.onConfigurationChanged(newConfig);
-}
-```
-
 <br>
 
 ### 주의 사항

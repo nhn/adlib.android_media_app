@@ -24,18 +24,23 @@ android {
 }
 
 dependencies {
-    //default
+    repositories {
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+    }
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.google.android.gms:play-services-ads:11.4.0'
-    compile 'com.google.android.gms:play-services-base:11.4.0'
+    compile 'com.google.android.gms:play-services-base:15.0.0'
     compile 'com.android.support:support-v4:26.1.0'
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.android.support:multidex:1.0.1'
+
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    // Adfit
-    compile(name: 'AdfitSDK-3.0.2', ext: 'aar')
+    //ADFit
+    compile 'com.kakao.adfit:ads-base:3.0.3'
+
+    // ADMOB
+    compile 'com.google.android.gms:play-services-ads:15.0.0'
 
     // facebook audiencenetwork
     compile 'com.facebook.android:audience-network-sdk:4.27.0'
@@ -60,9 +65,4 @@ dependencies {
     //MobFox
     compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:v3.3.0'
     compile 'com.moat.analytics.mobile.mpub:moat-mobile-app-kit:2.1.0'
-
-    // Glide : Image Loading Library (샘플 프로젝트에 사용)
-    compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
-
 }
