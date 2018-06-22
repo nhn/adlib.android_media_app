@@ -47,10 +47,6 @@
     android:name="com.mocoplex.adlib.AdlibDialogActivity"
     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
     android:theme="@android:style/Theme.Translucent"/>
-  <activity
-    android:name="com.mocoplex.adlib.AdlibVideoPlayer"
-    android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-    android:theme="@android:style/Theme.NoTitleBar"/>
 </application>
 ```
 
