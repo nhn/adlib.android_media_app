@@ -19,7 +19,6 @@
 - ShallWeAd   v1.9_20171120
 - T-ad(Syrup Ad/Dawin Click)  v3.16.3
 - TNK v6.37
-- UPlaus AD
 
 
 ## 개발환경
@@ -120,7 +119,6 @@ private void bindPlatform() {
     AdlibConfig.getInstance().bindPlatform("SHALLWEAD", "test.adlib.project.ads.SubAdlibAdViewShallWeAd");
     AdlibConfig.getInstance().bindPlatform("TAD", "test.adlib.project.ads.SubAdlibAdViewTAD");
     AdlibConfig.getInstance().bindPlatform("TNK", "test.adlib.project.ads.SubAdlibAdViewTNK");
-    AdlibConfig.getInstance().bindPlatform("UPLUSAD", "test.adlib.project.ads.SubAdlibAdViewUPlusAD");
 }
 ```
 

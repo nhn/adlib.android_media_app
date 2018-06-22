@@ -109,15 +109,6 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <!-- AXONIX -->
 
-
-        <!-- UPLUSAD - 광고 노출을 위해 필요한 선언입니다. -->
-        <activity
-            android:name="kr.co.uplusad.dmpcontrol.LGUDMPActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
-        <!-- UPLUSAD -->
-
-
         <!-- MEZZO MEDIA - 광고 노출을 위해 필요한 선언입니다. -->
         <meta-data
             android:name="MEZZO_WINDOW_ID"
@@ -144,12 +135,6 @@
             android:name="com.amazon.device.ads.AdActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
         <!-- AMAZON -->
-
-
-        <!-- MEDIBA AD - 광고 노출을 위해 필요한 선언입니다. -->
-        <activity android:name="mediba.ad.sdk.android.openx.MasAdClickWebview"/>
-        <!-- MEDIBA AD -->
-
 
         <!-- MOBFOX - 광고 노출을 위해 필요한 선언입니다. -->
         <activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"/>
