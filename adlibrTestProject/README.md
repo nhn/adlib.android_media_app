@@ -3,22 +3,21 @@
 > 또한 기타 광고 플랫폼을 사용하여 미디에이션 기능을 사용하는 방법을 제공합니다.
 
 
-## 지원 광고 플랫폼
-- AdMixer v1.4.2
-- Adfit(Adam) v3.0.2
+## 미디에이션 플랫폼 SDK 지원
+- AdMixer v1.4.5
+- Adfit(Adam) v3.0.4
 - Admob   Google Play Version
 - Amazon  v5.8.2
 - Axonix(Mobclix) v4.4.0
-- Cauly   v3.4.15
-- FaceBook v4.27.0
-- Inmobi  v7.0.2
-- MezzoMedia(A-plus)  v2.0(20161207)
-- MillennialMedia v6.6.1
-- Mobfox  v3.3.0
-- Mopub   v4.19
-- ShallWeAd   v1.9_20171120
+- Cauly   v3.4.21
+- FaceBook v4.99.0
+- Inmobi  v7.1.1
+- MillennialMedia v6.8.1
+- Mobfox  v3.6.0
+- Mopub   v5.0
+- ShallWeAd   v1.9_20180612
 - T-ad(Syrup Ad/Dawin Click)  v3.16.3
-- TNK v6.37
+- TNK v6.42
 
 
 ## 개발환경
