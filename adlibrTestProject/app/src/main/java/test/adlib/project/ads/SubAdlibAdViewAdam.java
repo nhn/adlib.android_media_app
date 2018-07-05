@@ -102,13 +102,7 @@ public class SubAdlibAdViewAdam extends SubAdlibAdViewCore {
 
         queryAd();
 
-        // AdfitSDK-3.0.2 이상 광고 요청 및 노출 오류로 추가
-        ad.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                ad.loadAd();
-            }
-        }, 50);
+        ad.loadAd();
 
         // 3초 이상 리스너 응답이 없으면 다음 플랫폼으로 넘어갑니다.
         Handler adHandler = new Handler();
