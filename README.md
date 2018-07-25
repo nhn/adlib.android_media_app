@@ -341,7 +341,7 @@ adlibManager.loadFullInterstitialAd(this, new Handler() {
 		<tbody>
 			<tr>
 				<td style="border:0;">
-					<img src="https://camo.githubusercontent.com/e122dcabe7c7294b025c943b056e5c2409dba706/687474703a2f2f646576656c6f7065722e61646c6962722e636f6d2f696d672f73646b5f616e645f6469616c6f672e706e67" width=300px>
+					<img src="http://developer.adlibr.com/share/img/sdk_and_dialog.png" width=300px>
 				</td>
 				<td class="dialog_tdata" style="border:0;">
 					Activity에서 requestAdDialog() 매서드를 통해 광고를 요청합니다.<br><br>
