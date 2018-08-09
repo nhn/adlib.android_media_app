@@ -60,7 +60,7 @@ dependencies {
     }
 
     // MillenialMedia
-    compile(name: 'mm-android-ad-sdk-dist-6.6.1', ext: 'aar')
+    compile(name: 'mmedia-android-ad-sdk-dist-6.6.1', ext: 'aar')
 
     //MobFox
     compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:v3.3.0'
