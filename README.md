@@ -155,7 +155,7 @@
 ## 개발환경
 - 최소 SDK Version : Android 11
 - Compile SDK : Android 22 이상
-- Build Tool : Android Stdio 권장
+- Build Tool : Android Studio 권장
 
 ## 프로젝트 연동
 
@@ -170,6 +170,7 @@
 
 <application
   android:icon="@mipmap/ic_launcher"
+  android:usesCleartextTraffic="true" // targetSdkVersion 28 부터 필수 추가
   android:label="@string/app_name">
 
   <activity
