@@ -39,6 +39,7 @@
 
 <application
   android:icon="@mipmap/ic_launcher"
+  android:usesCleartextTraffic="true" // targetSdkVersion 28 부터 필수 추가
   android:label="@string/app_name">
 
   <activity
