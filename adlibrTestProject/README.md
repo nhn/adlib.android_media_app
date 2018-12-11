@@ -35,7 +35,6 @@
 <!-- 애드립 사용을 위한 필수 -->
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-<uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
 
 <application
   android:icon="@mipmap/ic_launcher"
