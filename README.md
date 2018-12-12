@@ -149,7 +149,7 @@
 |Mobfox|v3.6.0|<a href="https://github.com/mobfox/MobFox-Android-SDK" target="_blank">다운로드</a>|
 |Mopub|v5.0|<a href="https://developers.mopub.com/docs/android/getting-started/" target="_blank">다운로드</a>|
 |ShallWeAd|v1.9_20180612|<a href="http://www.shallweadcorp.com/main/developer_01?pageNum=2&subNum=1" target="_blank">다운로드</a>|
-|T-ad(Syrup Ad/Dawin Click)|v3.16.3|<a href="http://www.syrupad.co.kr/publisher/guide_sdk" target="_blank">다운로드</a>|
+|T-ad(Syrup Ad/Dawin Click)|v3.16.3|<a href="https://click.dawin.tv/poc/#/sdk" target="_blank">다운로드</a>|
 |TNK|v6.42|<a href="http://docs.tnkad.net/tnk-ad-sdk/sdk-guide" target="_blank">다운로드</a>|
 
 
