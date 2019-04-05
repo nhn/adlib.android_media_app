@@ -9,6 +9,7 @@
 
 |버전|내용|
 |---|---|
+|5.0.0.2<br/>(2019.04.05)|구글 플레이스토어 앱 마켓 랜딩 개선<br>구형 단말기에서 전면배너 뷰의 잘림현상 개선<br>같은 플랫폼에서 광고가 연속적으로 노출될 때 리스너를 다시 주지 않는 현상 수정<br>|
 |5.0.0.1<br/>(2018.12.10)|이용자 단말로부터 수집하는 데이터 항목 축소<br>|
 |5.0.0.0<br/>(2018.06.12)|미디에이션 워터폴 방식 변경(광고 노출 성공하는 경우 스케쥴 index 초기화) <br>중지된 미디에이션 삭제 <br>샘플 프로젝트 업데이트 <br>|
 
@@ -278,4 +279,4 @@ adlibManager.showAdDialog("취소", "확인", "종료하시겠습니까?");
 
 - Proguard를 적용하는 경우 proguard configuration 파일 수정이 필요합니다.
 
-자세한 구현 내용은 샘플 프로젝트의 `proguard.cfg ` 파일 또는 [proguard-rules.pro](./app/proguard-rules.pro) 참고해 주세요.
+자세한 구현 내용은 샘플 프로젝트의 `proguard.cfg ` 파일 또는 [proguard-rules.pro](./adlibrTestProject/app/proguard-rules.pro) 참고해 주세요.
