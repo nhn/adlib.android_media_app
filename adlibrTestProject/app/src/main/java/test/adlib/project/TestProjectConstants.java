@@ -1,9 +1,5 @@
 package test.adlib.project;
 
-/**
- * Created by Adlib on 2018. 4. 17..
- */
-
 public class TestProjectConstants {
     // 애드립 광고를 테스트 하기 위한 키 입니다.
     public static String ADLIB_API_KEY = "58e49a730cf2618bf59e46d6";

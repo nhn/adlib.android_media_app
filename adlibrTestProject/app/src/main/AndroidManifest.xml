@@ -27,8 +27,8 @@
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:theme="@style/AppTheme">
+        android:usesCleartextTraffic="true"
+        android:roundIcon="@mipmap/ic_launcher_round">
 
         <!-- 애드립 사용을 위해 꼭 추가해주세요. -->
         <activity

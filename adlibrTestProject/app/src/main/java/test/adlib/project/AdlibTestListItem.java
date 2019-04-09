@@ -1,9 +1,5 @@
 package test.adlib.project;
 
-/**
- * Created by Adlib on 2017. 3. 30..
- */
-
 public enum AdlibTestListItem {
 
     BANNER_HEADER("Banner", true),
@@ -11,14 +7,7 @@ public enum AdlibTestListItem {
     BANNER_DYNAMIC("Dynamic"),
     INTERSTITIAL_HEADER("Interstitial", true),
     INTERSTITIAL_MEDIATION("Mediation"),
-    INTERSTITIAL_DYNAMIC("Dynamic"),
-    NATIVE_HEADER("Native", true),
-    NATIVE_LIST_1("List : Feed"),
-    NATIVE_LIST_2("List : Song"),
-    NATIVE_RECYCLER("RecyclerView"),
-    ETC_HEADER("ETC", true),
-    ADLIB_ACTIVITY("AdlibActivity"),
-    ICON_AD("Icon AD");
+    INTERSTITIAL_DYNAMIC("Dynamic");
 
     private String value;
     private boolean isHeader = false;
