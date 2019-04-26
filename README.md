@@ -26,25 +26,25 @@
 
 |플랫폼|버전|SDK 다운로드|
 |---|:---:|:---:|
-|AdMixer|v1.4.5|<a href="http://www.admixer.co.kr/" target="_blank">다운로드</a>|
-|Adfit(Adam)|v3.0.4|<a href="https://github.com/adfit/adfit-android-sdk" target="_blank">다운로드</a>|
+|AdMixer|v1.4.6|<a href="http://www.admixer.co.kr/" target="_blank">다운로드</a>|
+|Adfit(Adam)|v3.0.8|<a href="https://github.com/adfit/adfit-android-sdk" target="_blank">다운로드</a>|
 |Admob|Google Play Version|<a href="https://developers.google.com/admob/android/quick-start" target="_blank">다운로드</a>|
-|Amazon|v5.8.2|<a href="https://developer.amazon.com/public/resources/development-tools/sdk" target="_blank">다운로드</a>|
+|Amazon|v5.9.0|<a href="https://developer.amazon.com/public/resources/development-tools/sdk" target="_blank">다운로드</a>|
 |Axonix(Mobclix)|v4.4.0|<a href="https://github.com/AxonixRTB/axonix-android-sdk-releases" target="_blank">다운로드</a>|
-|Cauly|v3.4.21|<a href="https://github.com/cauly/Android-SDK" target="_blank">다운로드</a>|
-|FaceBook|v4.99.0|<a href="https://developers.facebook.com/docs/audience-network/getting-started?locale=ko_KR" target="_blank">다운로드</a>|
-|Inmobi|v7.1.1|<a href="http://www.inmobi.com/products/sdk/" target="_blank">다운로드</a>|
-|MillennialMedia|v6.8.1|<a href="http://docs.onemobilesdk.aol.com/android-ad-sdk/" target="_blank">다운로드</a>|
-|Mobfox|v3.6.0|<a href="https://github.com/mobfox/MobFox-Android-SDK" target="_blank">다운로드</a>|
-|Mopub|v5.0|<a href="https://developers.mopub.com/docs/android/getting-started/" target="_blank">다운로드</a>|
-|ShallWeAd|v1.9_20180612|<a href="http://www.shallweadcorp.com/main/developer_01?pageNum=2&subNum=1" target="_blank">다운로드</a>|
-|T-ad(Syrup Ad/Dawin Click)|v3.16.3|<a href="https://click.dawin.tv/poc/#/sdk" target="_blank">다운로드</a>|
-|TNK|v6.42|<a href="http://docs.tnkad.net/tnk-ad-sdk/sdk-guide" target="_blank">다운로드</a>|
+|Cauly|v3.4.23|<a href="https://github.com/cauly/Android-SDK" target="_blank">다운로드</a>|
+|FaceBook|v5.3.0|<a href="https://developers.facebook.com/docs/audience-network/getting-started?locale=ko_KR" target="_blank">다운로드</a>|
+|Inmobi|v7.2.7|<a href="http://www.inmobi.com/products/sdk/" target="_blank">다운로드</a>|
+|MillennialMedia|v6.8.3|<a href="http://docs.onemobilesdk.aol.com/android-ad-sdk/" target="_blank">다운로드</a>|
+|Mobfox|v3.6.9|<a href="https://github.com/mobfox/MobFox-Android-SDK" target="_blank">다운로드</a>|
+|Mopub|v5.6.0|<a href="https://developers.mopub.com/docs/android/getting-started/" target="_blank">다운로드</a>|
+|ShallWeAd|v1.12_20181031|<a href="http://www.shallweadcorp.com/main/developer_01?pageNum=2&subNum=1" target="_blank">다운로드</a>|
+|T-ad(Syrup Ad/Dawin Click)|v3.16.7|<a href="https://click.dawin.tv/poc/#/sdk" target="_blank">다운로드</a>|
+|TNK|v6.50|<a href="http://docs.tnkad.net/tnk-ad-sdk/sdk-guide" target="_blank">다운로드</a>|
 
 
 ## 개발환경
-- 최소 SDK Version : Android 11
-- Compile SDK : Android 22 이상
+- 최소 SDK Version : Android 19
+- Compile SDK : Android 26 이상
 - Build Tool : Android Studio 권장
 
 ## 프로젝트 연동

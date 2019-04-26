@@ -1,11 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-
 package test.adlib.project.ads;
 
 import android.content.Context;
@@ -21,15 +13,6 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
-
-/*
-AndroidManifest.xml 에 아래 내용을 추가해주세요.
-
- <meta-data android:name="com.google.android.gms.version"
-	android:value="@integer/google_play_services_version"/>
- <activity android:name="com.google.android.gms.ads.AdActivity"
-	android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
-*/
 
 public class SubAdlibAdViewAdmob extends SubAdlibAdViewCore {
 	
@@ -65,14 +48,12 @@ public class SubAdlibAdViewAdmob extends SubAdlibAdViewCore {
 
 			@Override
 			public void onAdFailedToLoad(int errorCode) {
-				
 				bGotAd = true;
 				failed();
 			}
 
 			@Override
 			public void onAdLoaded() {
-				
 				bGotAd = true;
 				queryAd();
 				// 광고를 받아왔으면 이를 알려 화면에 표시합니다.
@@ -141,10 +122,12 @@ public class SubAdlibAdViewAdmob extends SubAdlibAdViewCore {
 	}
 	
 	public void onResume() {
+    	ad.resume();
         super.onResume();
 	}
 	
 	public void onPause() {
+    	ad.pause();
         super.onPause();
 	}
 	
@@ -161,7 +144,6 @@ public class SubAdlibAdViewAdmob extends SubAdlibAdViewCore {
 
 	    // Set Ad Listener to use the callbacks below
 	    interstitial.setAdListener(new AdListener() {
-	    	
 			@Override
 			public void onAdClosed() {
 				try{
@@ -203,7 +185,6 @@ public class SubAdlibAdViewAdmob extends SubAdlibAdViewCore {
 			@Override
 			public void onAdLeftApplication() {
 			}
-	    	
 	    });
 	}
 }

@@ -5,7 +5,7 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId 'test.adlib.project'
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -24,42 +24,33 @@ android {
 }
 
 dependencies {
-    repositories {
-        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
-    }
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.google.android.gms:play-services-base:15.0.0'
-    compile 'com.android.support:multidex:1.0.1'
-
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.google.android.gms:play-services-base:16.1.0'
+    implementation 'com.android.support:multidex:1.0.3'
 
     //ADFit
-    compile 'com.kakao.adfit:ads-base:3.0.3'
+    implementation 'com.kakao.adfit:ads-base:3.0.8'
 
     // ADMOB
-    compile 'com.google.android.gms:play-services-ads:15.0.0'
+    implementation 'com.google.android.gms:play-services-ads:17.2.0'
 
     // facebook audiencenetwork
-    compile 'com.facebook.android:audience-network-sdk:4.27.0'
+    implementation 'com.facebook.android:audience-network-sdk:5.3.0'
 
     // Inmobi
-    compile 'com.inmobi.monetization:inmobi-ads:7.0.2'
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.inmobi.monetization:inmobi-ads:7.2.7'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     // mopub For banners
-    compile('com.mopub:mopub-sdk-banner:4.19.0@aar') {
-        transitive = true
-    }
+    implementation('com.mopub:mopub-sdk-banner:5.6.0@aar') { transitive = true }
 
     // mopub For interstitials
-    compile('com.mopub:mopub-sdk-interstitial:4.19.0@aar') {
-        transitive = true
-    }
+    implementation('com.mopub:mopub-sdk-interstitial:5.6.0@aar') { transitive = true }
 
     // MillenialMedia
-    compile(name: 'mmedia-android-ad-sdk-dist-6.6.1', ext: 'aar')
+    implementation(name: 'millennialMedia-sdk-6.8.3', ext: 'aar')
 
-    //MobFox
-    compile 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:v3.3.0'
-    compile 'com.moat.analytics.mobile.mpub:moat-mobile-app-kit:2.1.0'
+    // MobFox
+    implementation 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.6.9'
 }

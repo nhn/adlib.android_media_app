@@ -1,14 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-/*
- * confirmed compatible with MillennialMedia SDK 6.3.1
- */
-
 package test.adlib.project.ads;
 
 import android.app.Activity;
@@ -26,17 +15,6 @@ import com.millennialmedia.MMSDK;
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
 
-/*
- AndroidManifest.xml 에 아래 내용을 추가해주세요.
- 
- <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
- <activity android:name="com.millennialmedia.android.MMActivity"
-	android:theme="@android:style/Theme.Translucent.NoTitleBar"
-	android:configChanges="keyboardHidden|orientation|keyboard" >
- </activity>
- */
-
 public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 	
 	protected InlineAd ad;
@@ -46,8 +24,6 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 	protected String mMediaID = "MILLENNIALMEDIA_ID";
 	protected static String mMediaInterstitialID = "MILLENNIALMEDIA_INTERSTITIAL_ID";
 	
-	protected static Handler intersHandler = null;
-
 	public SubAdlibAdViewMMedia(Context context) {
 		this(context,null);
 	}	
@@ -59,9 +35,7 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 		initMmediaView();
 	}
 	
-	public void initMmediaView()
-	{
-		
+	public void initMmediaView() {
 		try {
 			ad = InlineAd.createInstance(mMediaID, this);
 			
@@ -69,12 +43,10 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 				
 				@Override
 				public void onResized(InlineAd arg0, int arg1, int arg2, boolean arg3) {
-					
 				}
 				
 				@Override
 				public void onResize(InlineAd arg0, int arg1, int arg2) {
-					
 				}
 				
 				@Override
@@ -92,12 +64,10 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 				
 				@Override
 				public void onExpanded(InlineAd arg0) {
-					
 				}
 				
 				@Override
 				public void onCollapsed(InlineAd arg0) {
-					
 				}
 				
 				@Override
@@ -106,7 +76,6 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 				
 				@Override
 				public void onAdLeftApplication(InlineAd arg0) {
-					
 				}
 			});
 			
@@ -179,19 +148,15 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 	
 	public static void loadInterstitial(final Context ctx, final Handler h, final String adlibKey) {
 		try {
+			MMSDK.initialize((Activity)ctx);
 			final InterstitialAd interstitialAd = InterstitialAd.createInstance(mMediaInterstitialID);
-			
-			if(interstitialAd != null){
-				interstitialAd.load(ctx, null);
-			}
-			
+
 			interstitialAd.setListener(new InterstitialAd.InterstitialListener() {
-				
 				@Override
 				public void onShown(InterstitialAd arg0) {
 					try{
-						if(intersHandler != null){
-			 				intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.DID_SUCCEED, "MMEDIA"));
+						if(h != null){
+							h.sendMessage(Message.obtain(h, AdlibManager.DID_SUCCEED, "MMEDIA"));
 			 			}
 					}catch(Exception e){
 					}
@@ -199,7 +164,6 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 				
 				@Override
 				public void onShowFailed(InterstitialAd arg0, InterstitialErrorStatus arg1) {
-					
 				}
 				
 				@Override
@@ -211,15 +175,14 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 							e.printStackTrace();
 						}
 					}else{
-						
 					}
 				}
 				
 				@Override
 				public void onLoadFailed(InterstitialAd arg0, InterstitialErrorStatus arg1) {
 					try{
-						if(intersHandler != null){
-		 					intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.DID_ERROR, "MMEDIA"));
+						if(h != null){
+							h.sendMessage(Message.obtain(h, AdlibManager.DID_ERROR, "MMEDIA"));
 		 				}
 					}catch(Exception e){
 					}
@@ -227,14 +190,13 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 				
 				@Override
 				public void onExpired(InterstitialAd arg0) {
-					
 				}
 				
 				@Override
 				public void onClosed(InterstitialAd arg0) {
 					try{
-						if(intersHandler != null){
-		 					intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.INTERSTITIAL_CLOSED, "MMEDIA"));
+						if(h != null){
+							h.sendMessage(Message.obtain(h, AdlibManager.INTERSTITIAL_CLOSED, "MMEDIA"));
 		 				}
 					}catch(Exception e){
 					}
@@ -246,10 +208,11 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 				
 				@Override
 				public void onAdLeftApplication(InterstitialAd arg0) {
-					
 				}
 			});
-			
+			if(interstitialAd != null){
+				interstitialAd.load(ctx, null);
+			}
 		} catch (MMException e) {
 			e.printStackTrace();
 		}

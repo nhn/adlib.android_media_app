@@ -1,13 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-/*
- * confirmed compatible with mobfox SDK v3.2.5
-*/
 package test.adlib.project.ads;
 
 import android.content.Context;
@@ -15,20 +5,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.view.View;
 
-import com.mobfox.sdk.bannerads.Banner;
-import com.mobfox.sdk.bannerads.BannerListener;
-import com.mobfox.sdk.interstitialads.InterstitialAd;
-import com.mobfox.sdk.interstitialads.InterstitialAdListener;
+import com.mobfox.sdk.banner.Banner;
+import com.mobfox.sdk.interstitial.Interstitial;
+import com.mobfox.sdk.interstitial.InterstitialListener;
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
-
-/*
-AndroidManifest.xml 에 아래 내용을 추가해주세요.
-
-<activity android:name="com.mobfox.sdk.interstitialads.InterstitialActivity"></activity>
-*/
 
 public class SubAdlibAdViewMobfox extends SubAdlibAdViewCore {
 
@@ -51,24 +33,22 @@ public class SubAdlibAdViewMobfox extends SubAdlibAdViewCore {
     }
 
     public void initMobfoxView() {
-        banner = new Banner(getContext(), 320, 50);
-
-        banner.setListener(new BannerListener() {
+        Banner.Listener bannerListener = new Banner.Listener() {
             @Override
-            public void onBannerError(View banner, Exception e) {
+            public void onBannerError(Banner banner, Exception e) {
                 bGotAd = true;
                 failed();
             }
 
             @Override
-            public void onBannerLoaded(View banner) {
+            public void onBannerLoaded(Banner banner) {
                 bGotAd = true;
                 // 광고를 받아왔으면 이를 알려 화면에 표시합니다.
                 gotAd();
             }
 
             @Override
-            public void onBannerClosed(View banner) {
+            public void onBannerClosed(Banner banner) {
             }
 
             @Override
@@ -76,14 +56,17 @@ public class SubAdlibAdViewMobfox extends SubAdlibAdViewCore {
             }
 
             @Override
-            public void onBannerClicked(View banner) {
+            public void onBannerClicked(Banner banner) {
             }
 
             @Override
-            public void onNoFill(View banner) {
+            public void onNoFill(Banner banner) {
+                bGotAd = true;
+                failed();
             }
-        });
-        banner.setInventoryHash(mofoxBannerID);
+        };
+        banner = new Banner(getContext(), 320, 50, mofoxBannerID, bannerListener);
+        banner.setRefresh(0);
 
         LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         banner.setLayoutParams(params);
@@ -153,37 +136,31 @@ public class SubAdlibAdViewMobfox extends SubAdlibAdViewCore {
         super.onDestroy();
     }
 
-
-    // 전면광고가 호출되는 경우
     public static void loadInterstitial(Context ctx, final Handler h, final String adlibKey) {
-        InterstitialAd interstitial = new InterstitialAd(ctx);
-
-        InterstitialAdListener listener = new InterstitialAdListener() {
+        Interstitial interstitial = new Interstitial(ctx, mofoxInterstitialID, new InterstitialListener() {
             @Override
-            public void onInterstitialLoaded(InterstitialAd interstitial) {
+            public void onInterstitialLoaded(Interstitial interstitial) {
                 try {
                     if (h != null) {
                         h.sendMessage(Message.obtain(h, AdlibManager.DID_SUCCEED, "MOBFOX"));
                     }
                 } catch (Exception e) {
                 }
-                // 미디에이션 통계 정보
                 interstitial.show();
             }
 
             @Override
-            public void onInterstitialFailed(InterstitialAd interstitial, Exception e) {
+            public void onInterstitialFailed(String e) {
                 try {
                     if (h != null) {
                         h.sendMessage(Message.obtain(h, AdlibManager.DID_ERROR, "MOBFOX"));
                     }
-                    // release.
                 } catch (Exception exception) {
                 }
             }
 
             @Override
-            public void onInterstitialClosed(InterstitialAd interstitial) {
+            public void onInterstitialClosed() {
                 try {
                     if (h != null) {
                         h.sendMessage(Message.obtain(h, AdlibManager.INTERSTITIAL_CLOSED, "MOBFOX"));
@@ -193,23 +170,17 @@ public class SubAdlibAdViewMobfox extends SubAdlibAdViewCore {
             }
 
             @Override
+            public void onInterstitialClicked() {
+            }
+
+            @Override
+            public void onInterstitialShown() {
+            }
+
+            @Override
             public void onInterstitialFinished() {
-
             }
-
-            @Override
-            public void onInterstitialClicked(InterstitialAd interstitial) {
-            }
-
-            @Override
-            public void onInterstitialShown(InterstitialAd interstitial) {
-            }
-        };
-        interstitial.setListener(listener);
-        interstitial.setSkip(true);
-        interstitial.setInventoryHash(mofoxInterstitialID);
-
+        });
         interstitial.load();
     }
-
 }

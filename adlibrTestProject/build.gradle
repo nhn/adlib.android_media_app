@@ -2,11 +2,11 @@
 
 buildscript {
     repositories {
+        google()
         jcenter()
-        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:3.2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -15,12 +15,14 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenCentral()
+        google()
         jcenter()
 
         maven { url "https://jitpack.io" } // MobFox sdk
-        maven { url "https://s3.amazonaws.com/moat-sdk-builds" } // MobFox sdk
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' } // adfit
+        maven { url "https://s3.amazonaws.com/moat-sdk-builds" }  // mopub
         maven { url 'https://maven.google.com' } // necessary for Android API 26
+
         flatDir {
             dirs 'libs'
         }

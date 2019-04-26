@@ -1,14 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-/*
- * confirmed compatible with mopub SDK 4.13
-*/
-
 package test.adlib.project.ads;
 
 import android.app.Activity;
@@ -20,35 +9,26 @@ import android.view.Gravity;
 
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.mopub.common.MoPub;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.SdkInitializationListener;
 import com.mopub.mobileads.MoPubErrorCode;
 import com.mopub.mobileads.MoPubInterstitial;
 import com.mopub.mobileads.MoPubView;
-
-/*
-
-Gitgub url >> https://github.com/mopub/mopub-android-sdk
-
-AndroidManifest.xml 에 아래 내용을 추가해주세요.
- 
-<activity android:name="com.mopub.mobileads.MoPubActivity" android:configChanges="keyboardHidden|orientation"/>
-<activity android:name="com.mopub.mobileads.MraidActivity" android:configChanges="keyboardHidden|orientation"/>
-<activity android:name="com.mopub.common.MoPubBrowser" android:configChanges="keyboardHidden|orientation"/>
-<activity android:name="com.mopub.mobileads.MraidVideoPlayerActivity" android:configChanges="keyboardHidden|orientation"/>
-		 
- */
 
 public class SubAdlibAdViewMopub extends SubAdlibAdViewCore {
 
 	protected boolean bGotAd = false;
 	protected MoPubView ad;
-	
+	protected boolean isInitSDK = false;
+	protected static boolean isInitIntersSDK = false;
+
 	// 여기에 MOPUB ID 를 입력하세요.
 	protected String mopubID = "MOPUB_ID";
 	protected static String mopubInterstitialID = "MOPUB_INTERSTITIAL_ID";
 	
-	protected static Handler intersHandler = null;
-	
 	protected void initMobpubView() {
+		isInitSDK = true;
 		ad = new MoPubView(getContext());
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		ad.setLayoutParams(params);
@@ -80,14 +60,10 @@ public class SubAdlibAdViewMopub extends SubAdlibAdViewCore {
 
 			@Override
 			public void onBannerExpanded(MoPubView banner) {
-				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
 			public void onBannerCollapsed(MoPubView banner) {
-				// TODO Auto-generated method stub
-				
 			}
 		});		
 	}
@@ -99,12 +75,35 @@ public class SubAdlibAdViewMopub extends SubAdlibAdViewCore {
 	public SubAdlibAdViewMopub(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
-		initMobpubView();
+		SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(mopubID).build();
+		MoPub.initializeSdk(getContext(), sdkConfiguration, new SdkInitializationListener() {
+			@Override
+			public void onInitializationFinished() {
+				// MoPub 초기화 후 바로 MoPubView 초기화 하는 경우 정상 동작 안하는 문제로 100ms 딜레이
+				Handler adHandler = new Handler();
+				adHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						initMobpubView();
+					}
+				}, 100);
+			}
+		});
 	}
 	
 	// 스케줄러에의해 자동으로 호출됩니다.
 	// 실제로 광고를 보여주기 위하여 요청합니다.
 	public void query() {
+		if (!isInitSDK) {
+			Handler mHandler = new Handler();
+			mHandler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					query();
+				}
+			}, 100);
+			return;
+		}
 		bGotAd = false;
 		if(ad == null)
 			initMobpubView();
@@ -161,18 +160,34 @@ public class SubAdlibAdViewMopub extends SubAdlibAdViewCore {
 	}
 
 	// 전면광고가 호출되는 경우
-	public static void loadInterstitial(Context ctx, final Handler h, final String adlibKey) {
+	public static void loadInterstitial(final Context ctx, final Handler h, final String adlibKey) {
+		if (!isInitIntersSDK) {
+			SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(mopubInterstitialID).build();
+			MoPub.initializeSdk(ctx, sdkConfiguration, new SdkInitializationListener() {
+				@Override
+				public void onInitializationFinished() {
+					// MoPub 초기화 후 바로 MoPubInterstitial 초기화 하는 경우 정상 동작 안하는 문제로 100ms 딜레이
+					Handler adHandler = new Handler();
+					adHandler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							isInitIntersSDK = true;
+							loadInterstitial(ctx, h, adlibKey);
+						}
+					}, 100);
+				}
+			});
+			return;
+		}
 		final MoPubInterstitial mInterstitial = new MoPubInterstitial((Activity) ctx, mopubInterstitialID);
-		
-		intersHandler = h;
 		
 	    mInterstitial.setInterstitialAdListener( new MoPubInterstitial.InterstitialAdListener() {
 
 			@Override
 			public void onInterstitialLoaded(MoPubInterstitial interstitial) {
 				try{
-					if(intersHandler != null){							
-	 					intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.DID_SUCCEED, "MOPUB"));
+					if(h != null){
+	 					h.sendMessage(Message.obtain(h, AdlibManager.DID_SUCCEED, "MOPUB"));
 	 				}
 					
 					if(mInterstitial.isReady()){
@@ -185,8 +200,8 @@ public class SubAdlibAdViewMopub extends SubAdlibAdViewCore {
 			@Override
 			public void onInterstitialFailed( MoPubInterstitial interstitial, MoPubErrorCode errorCode) {
 				try{
-					if(intersHandler != null){
-	 					intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.DID_ERROR, "MOPUB"));
+					if(h != null){
+	 					h.sendMessage(Message.obtain(h, AdlibManager.DID_ERROR, "MOPUB"));
 	 				}
 					
 					if(mInterstitial != null){
@@ -207,8 +222,8 @@ public class SubAdlibAdViewMopub extends SubAdlibAdViewCore {
 			@Override
 			public void onInterstitialDismissed(MoPubInterstitial interstitial) {
 				try{
-					if(intersHandler != null){
-	 					intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.INTERSTITIAL_CLOSED, "MOPUB"));
+					if(h != null){
+	 					h.sendMessage(Message.obtain(h, AdlibManager.INTERSTITIAL_CLOSED, "MOPUB"));
 	 				}
 					
 					if(mInterstitial != null){
@@ -217,7 +232,6 @@ public class SubAdlibAdViewMopub extends SubAdlibAdViewCore {
 				}catch(Exception e){
 				}
 			}
-	    	
 	    });
 	    
 	    mInterstitial.load();	

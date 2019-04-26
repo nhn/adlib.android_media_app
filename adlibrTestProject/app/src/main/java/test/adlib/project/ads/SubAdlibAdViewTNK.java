@@ -1,14 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-/*
- * confirmed compatible with TNK SDK 6.33
- */
-
 package test.adlib.project.ads;
 
 import android.app.Activity;
@@ -22,13 +11,6 @@ import com.mocoplex.adlib.SubAdlibAdViewCore;
 import com.tnkfactory.ad.TnkAdListener;
 import com.tnkfactory.ad.TnkSession;
 
-/*
-AndroidManifest.xml 에 아래 내용을 추가해주세요.	
-<meta-data android:name="tnkad_app_id" android:value="발급받은 TNK App-ID를 입력해주세요." />
-<activity android:name="com.tnkfactory.ad.AdWallActivity" />
-<activity android:name="com.tnkfactory.ad.AdMediaActivity" android:screenOrientation="landscape"/>
-*/
-
 public class SubAdlibAdViewTNK extends SubAdlibAdViewCore {
 
 	public SubAdlibAdViewTNK(Context context) {
@@ -40,7 +22,6 @@ public class SubAdlibAdViewTNK extends SubAdlibAdViewCore {
 	}
 	
 	public void query() {
-		
 		failed();
 	}
 
@@ -61,7 +42,7 @@ public class SubAdlibAdViewTNK extends SubAdlibAdViewCore {
 	}
 	
 	public static void loadInterstitial(final Context ctx, final Handler h, final String adlibKey){
-		
+
 		TnkSession.prepareInterstitialAd((Activity) ctx, TnkSession.CPC, new TnkAdListener() {
 	         public void onClose(int type) {
 	        	 try{
@@ -70,7 +51,6 @@ public class SubAdlibAdViewTNK extends SubAdlibAdViewCore {
 	 				}
 	 				
 	 			}catch(Exception e){
-	 				
 	 			}
 	         }
 
@@ -79,7 +59,6 @@ public class SubAdlibAdViewTNK extends SubAdlibAdViewCore {
 	  				if(h != null){
 	  					h.sendMessage(Message.obtain(h, AdlibManager.DID_ERROR, "TNK"));
 	  				}
-	  				
 	 			}catch(Exception e){
 	 				
 	 			}
@@ -90,19 +69,14 @@ public class SubAdlibAdViewTNK extends SubAdlibAdViewCore {
 	        		 if(h != null){
 	  					h.sendMessage(Message.obtain(h, AdlibManager.DID_SUCCEED, "TNK"));
 	  				}
-	        		 
 	        		 TnkSession.showInterstitialAd((Activity)ctx);
-	        		 
 	        	 }catch(Exception e){
-	        		 
 	        	 }
 	         }
 
 	         @Override
 	         public void onShow() {
-	        	 
 	         }
 	     });
 	}
-
 }

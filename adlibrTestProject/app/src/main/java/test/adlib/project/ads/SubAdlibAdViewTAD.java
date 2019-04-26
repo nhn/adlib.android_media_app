@@ -1,14 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-/*
- * confirmed compatible with T ad SDK 3.16
- */
-
 package test.adlib.project.ads;
 
 import android.app.Activity;
@@ -20,6 +9,7 @@ import android.view.Gravity;
 
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.skplanet.tad.AdView;
 import com.skplanet.tad.AdInterstitial;
 import com.skplanet.tad.AdInterstitialListener;
 import com.skplanet.tad.AdListener;
@@ -27,27 +17,11 @@ import com.skplanet.tad.AdRequest.ErrorCode;
 import com.skplanet.tad.AdSlot;
 import com.skplanet.tad.AdView.AnimationType;
 
-/*
-AndroidManifest.xml 에 아래 내용을 추가해주세요.
-
- <activity
-	android:name="com.skplanet.tad.AdActivity"
-	android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-	android:label="Ad Activity"
-	android:theme="@android:style/Theme.Translucent.NoTitleBar" >
- </activity>
- <receiver android:name="com.skplanet.tad.SyrupAdReceiver" >
-    <intent-filter>
-        <action android:name="com.skplanet.syrupad.action.SAID_CHANGED" />
-    </intent-filter>
- </receiver>
-*/
-
 public class SubAdlibAdViewTAD extends SubAdlibAdViewCore {
 	
-	protected com.skplanet.tad.AdView ad;
+	protected AdView ad;
 	protected boolean bGotAd = false;
-	
+
 	// 여기에 T-AD 에서 발급받은 id 를 입력하세요.
 	protected String tAdId = "Tad_ID";
 	protected static String tAdInterstitialId = "Tad_Interstitial_ID";

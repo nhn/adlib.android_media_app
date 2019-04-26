@@ -1,14 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-/*
- * confirmed compatible with Inmobi SDK 6.1.1
- */
-
 package test.adlib.project.ads;
 
 import android.app.Activity;
@@ -22,27 +11,19 @@ import android.view.Gravity;
 
 import com.inmobi.ads.InMobiAdRequestStatus;
 import com.inmobi.ads.InMobiBanner;
-import com.inmobi.ads.InMobiBanner.BannerAdListener;
 import com.inmobi.ads.InMobiInterstitial;
-import com.inmobi.ads.InMobiInterstitial.InterstitialAdListener2;
+import com.inmobi.ads.listeners.BannerAdEventListener;
+import com.inmobi.ads.listeners.InterstitialAdEventListener;
 import com.inmobi.sdk.InMobiSdk;
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
 
 import java.util.Map;
 
-/*
- AndroidManifest.xml 에 아래 내용을 추가해주세요.
-
- <activity android:name="com.inmobi.rendering.InMobiAdActivity"
-	android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize"
-	android:theme="@android:style/Theme.Translucent.NoTitleBar"
-	android:hardwareAccelerated="true" />
-*/
-
 public class SubAdlibAdViewInmobi extends SubAdlibAdViewCore {
 	
 	protected InMobiBanner ad;
+	protected static InMobiInterstitial mInterstitial;
 	protected boolean bGotAd = false;
 
 	// 여기에 인모비의 계정 ID 를 입력하세요. 
@@ -51,8 +32,6 @@ public class SubAdlibAdViewInmobi extends SubAdlibAdViewCore {
 	// 여기에 인모비에서 발급받은 Placement Id 를 입력하세요.
 	protected static long inmobiPlacementId = 0L;
 	protected static long inmobiInterstitialPlacementId = 0L;
-	
-	protected static Handler intersHandler = null;
 
 	private int getPixels(int dipValue) {
         Resources r = getResources();
@@ -66,7 +45,7 @@ public class SubAdlibAdViewInmobi extends SubAdlibAdViewCore {
 	
 	public SubAdlibAdViewInmobi(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		
+
         InMobiSdk.init((Activity) context, inmobiAccountId);
 	}
 	
@@ -80,46 +59,46 @@ public class SubAdlibAdViewInmobi extends SubAdlibAdViewCore {
 		// 광고 뷰의 위치 속성을 제어할 수 있습니다. 
 		this.setGravity(Gravity.CENTER);
 
-		// set the listener if the app has to know ad status notifications
-		ad.setListener(new BannerAdListener() {
-			
+		ad.setListener(new BannerAdEventListener() {
 			@Override
-			public void onAdDismissed(InMobiBanner arg0) {
-				
-			}
-
-			@Override
-			public void onAdDisplayed(InMobiBanner arg0) {
-				
-			}
-
-			@Override
-			public void onAdInteraction(InMobiBanner arg0, Map<Object, Object> arg1) {
-			}
-
-			@Override
-			public void onAdLoadFailed(InMobiBanner arg0, InMobiAdRequestStatus arg1) {
-				
-				bGotAd = true;
-				failed();
-			}
-
-			@Override
-			public void onAdLoadSucceeded(InMobiBanner arg0) {
-				
+			public void onAdLoadSucceeded(InMobiBanner var1) {
 				bGotAd = true;
 				// 광고를 받아왔으면 이를 알려 화면에 표시합니다.
 				gotAd();
 			}
 
 			@Override
-			public void onAdRewardActionCompleted(InMobiBanner arg0, Map<Object, Object> arg1) {
-				
+			public void onAdLoadFailed(InMobiBanner var1, InMobiAdRequestStatus var2) {
+				bGotAd = true;
+				failed();
 			}
 
 			@Override
-			public void onUserLeftApplication(InMobiBanner arg0) {
-				
+			public void onAdClicked(InMobiBanner var1, Map<Object, Object> var2) {
+			}
+
+			@Override
+			public void onAdDisplayed(InMobiBanner var1) {
+			}
+
+			@Override
+			public void onAdDismissed(InMobiBanner var1) {
+			}
+
+			@Override
+			public void onUserLeftApplication(InMobiBanner var1) {
+			}
+
+			@Override
+			public void onRewardsUnlocked(InMobiBanner var1, Map<Object, Object> var2) {
+			}
+
+			@Override
+			public void onRequestPayloadCreated(byte[] var1) {
+			}
+
+			@Override
+			public void onRequestPayloadCreationFailed(InMobiAdRequestStatus var1) {
 			}
 		});
 		
@@ -165,7 +144,6 @@ public class SubAdlibAdViewInmobi extends SubAdlibAdViewCore {
 			this.removeView(ad);
 			ad = null;
 		}
-		
 		super.clearAdView();
 	}
 	
@@ -174,7 +152,6 @@ public class SubAdlibAdViewInmobi extends SubAdlibAdViewCore {
 			this.removeView(ad);
 			ad = null;
 		}
-		
 		super.onDestroy();
 	}
 	
@@ -188,85 +165,78 @@ public class SubAdlibAdViewInmobi extends SubAdlibAdViewCore {
 	
 	public static void loadInterstitial(Context ctx, final Handler h, final String adlibKey) {
         InMobiSdk.init((Activity)ctx, inmobiAccountId);
-		
-        InterstitialAdListener2 intersListener = new InterstitialAdListener2() {
 
+		mInterstitial = new InMobiInterstitial((Activity) ctx, inmobiInterstitialPlacementId, new InterstitialAdEventListener() {
 			@Override
-			public void onAdDismissed(InMobiInterstitial ad) {
-				
-				try{
-		 			// 전면광고 닫혔다.
-		 			if(intersHandler != null){
-		 				intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.INTERSTITIAL_CLOSED, "INMOBI"));
-		 			} 				   		 					
-				}catch(Exception e){
-				}
-			}
-
-			@Override
-			public void onAdDisplayed(InMobiInterstitial ad) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onAdInteraction(InMobiInterstitial ad, Map<Object, Object> arg1) {
-			}
-
-			@Override
-			public void onAdLoadFailed(InMobiInterstitial ad, InMobiAdRequestStatus arg1) {
-				
-				try{
-		 			if(intersHandler != null){
-		 				intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.DID_ERROR, "INMOBI"));
-		 			}
-				}catch(Exception e){
-				}
-			}
-
-            @Override
-            public void onAdReceived(InMobiInterstitial inMobiInterstitial) {
-
-            }
-
-            @Override
 			public void onAdLoadSucceeded(InMobiInterstitial ad) {
-				
 				try{
-		 			if(intersHandler != null){
-		 				intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.DID_SUCCEED, "INMOBI"));
-		 			}
+					if(h != null){
+						h.sendMessage(Message.obtain(h, AdlibManager.DID_SUCCEED, "INMOBI"));
+					}
 
-		 			if(ad.isReady()){
-		 				ad.show();
-		 			}
+					if(ad.isReady()){
+						ad.show();
+					}
 				}catch(Exception e){
 				}
 			}
 
 			@Override
-			public void onAdRewardActionCompleted(InMobiInterstitial ad, Map<Object, Object> arg1) {
-				
+			public void onAdLoadFailed(InMobiInterstitial var1, InMobiAdRequestStatus var2) {
+				try{
+					if(h != null){
+						h.sendMessage(Message.obtain(h, AdlibManager.DID_ERROR, "INMOBI"));
+					}
+				}catch(Exception e){
+				}
 			}
 
-            @Override
-            public void onAdDisplayFailed(InMobiInterstitial inMobiInterstitial) {
-
-            }
-
-            @Override
-            public void onAdWillDisplay(InMobiInterstitial inMobiInterstitial) {
-
-            }
-
-            @Override
-			public void onUserLeftApplication(InMobiInterstitial ad) {
-				
+			@Override
+			public void onAdReceived(InMobiInterstitial var1) {
 			}
-	    };
-		
-		final InMobiInterstitial interstitial = new InMobiInterstitial((Activity) ctx, inmobiInterstitialPlacementId, intersListener);
-		interstitial.load();
-		intersHandler = h;
+
+			@Override
+			public void onAdClicked(InMobiInterstitial var1, Map<Object, Object> var2) {
+			}
+
+			@Override
+			public void onAdWillDisplay(InMobiInterstitial var1) {
+			}
+
+			@Override
+			public void onAdDisplayed(InMobiInterstitial var1) {
+			}
+
+			@Override
+			public void onAdDisplayFailed(InMobiInterstitial var1) {
+			}
+
+			@Override
+			public void onAdDismissed(InMobiInterstitial var1) {
+				try{
+					if(h != null){
+						h.sendMessage(Message.obtain(h, AdlibManager.INTERSTITIAL_CLOSED, "INMOBI"));
+					}
+				}catch(Exception e){
+				}
+			}
+
+			@Override
+			public void onUserLeftApplication(InMobiInterstitial var1) {
+			}
+
+			@Override
+			public void onRewardsUnlocked(InMobiInterstitial var1, Map<Object, Object> var2) {
+			}
+
+			@Override
+			public void onRequestPayloadCreated(byte[] var1) {
+			}
+
+			@Override
+			public void onRequestPayloadCreationFailed(InMobiAdRequestStatus var1) {
+			}
+		});
+		mInterstitial.load();
 	}
 }

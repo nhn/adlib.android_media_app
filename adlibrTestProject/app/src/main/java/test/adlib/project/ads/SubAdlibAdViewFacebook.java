@@ -1,10 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
 package test.adlib.project.ads;
 
 import android.content.Context;
@@ -15,18 +8,13 @@ import android.util.AttributeSet;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
 import com.facebook.ads.AdListener;
+import com.facebook.ads.AdSettings;
 import com.facebook.ads.AdSize;
 import com.facebook.ads.AdView;
 import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
-
-/*
-AndroidManifest.xml 에 아래 내용을 추가해주세요.
-	<activity android:name="com.facebook.ads.AudienceNetworkActivity"
- 			android:configChanges="keyboardHidden|orientation|screenSize" />
-*/
 
 public class SubAdlibAdViewFacebook extends SubAdlibAdViewCore {
 	
@@ -58,7 +46,6 @@ public class SubAdlibAdViewFacebook extends SubAdlibAdViewCore {
 
 			@Override
 			public void onLoggingImpression(Ad ad) {
-
 			}
 
 			@Override

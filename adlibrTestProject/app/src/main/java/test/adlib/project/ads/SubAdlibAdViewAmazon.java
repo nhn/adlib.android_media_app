@@ -1,10 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
 package test.adlib.project.ads;
 
 import android.app.Activity;
@@ -22,13 +15,6 @@ import com.amazon.device.ads.AdRegistration;
 import com.amazon.device.ads.AdSize;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
 
-/*
- AndroidManifest.xml 에 아래 내용을 추가해주세요.
- 
- <activity 
-	android:name="com.amazon.device.ads.AdActivity"
-	android:configChanges="keyboardHidden|orientation|screenSize"/>
- */
 public class SubAdlibAdViewAmazon extends SubAdlibAdViewCore {
 	
 	protected AdLayout ad;
@@ -59,29 +45,24 @@ public class SubAdlibAdViewAmazon extends SubAdlibAdViewCore {
 
 			@Override
 			public void onAdCollapsed(Ad arg0) {
-				
 			}
 
 			@Override
 			public void onAdDismissed(Ad arg0) {
-				
 			}
 
 			@Override
 			public void onAdExpanded(Ad arg0) {
-				
 			}
 
 			@Override
 			public void onAdFailedToLoad(Ad arg0, AdError arg1) {
-				
 				bGotAd = true;
 				failed();
 			}
 
 			@Override
 			public void onAdLoaded(Ad arg0, AdProperties arg1) {
-				
 				bGotAd = true;
 				queryAd();
 				// 광고를 받아왔으면 이를 알려 화면에 표시합니다.
@@ -130,7 +111,7 @@ public class SubAdlibAdViewAmazon extends SubAdlibAdViewCore {
 				}
 			}
             
-		}, 3000);
+		}, 10000);
 	}
 	
 	public void onDestroy() {

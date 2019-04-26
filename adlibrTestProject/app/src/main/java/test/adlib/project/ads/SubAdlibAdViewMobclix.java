@@ -1,14 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-/*
- * confirmed compatible with Axonix(mobclix) SDK 4.4.0
- */
-
 package test.adlib.project.ads;
 
 import android.app.Activity;
@@ -25,16 +14,6 @@ import com.axonix.android.sdk.AxonixFullScreenAdViewListener;
 import com.axonix.android.sdk.AxonixMMABannerXLAdView;
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
-
-/*
- AndroidManifest.xml 에 아래 내용을 추가해주세요.
-
- <meta-data android:name="com.mobclix.APPLICATION_ID"
-	android:value="insert-your-application-key" />
- <activity android:name="com.mobclix.android.sdk.MobclixBrowserActivity"
-	android:theme="@android:style/Theme.Translucent.NoTitleBar"
-	android:hardwareAccelerated="true" />
- */
 
 public class SubAdlibAdViewMobclix extends SubAdlibAdViewCore {
 	

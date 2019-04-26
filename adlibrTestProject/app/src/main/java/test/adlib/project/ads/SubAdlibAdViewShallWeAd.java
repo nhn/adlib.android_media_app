@@ -1,14 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-/*
- * confirmed compatible with ShallWeAd SDK v1.8_20160804
- */
-
 package test.adlib.project.ads;
 
 import android.content.Context;
@@ -16,26 +5,12 @@ import android.os.Handler;
 import android.util.AttributeSet;
 
 import com.co.shallwead.sdk.ShallWeAdBanner.ShallWeAdBannerListener;
-import com.co.shallwead.sdk.ShallWeAdBannerForMediation;
+import com.co.shallwead.sdk.ShallWeAdBanner;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
-
-/*
- AndroidManifest.xml 에 아래 내용을 추가해주세요.
-
- <meta-data
-    android:name="ShallWeAd_Application_Key"
-    android:value="발급받은 ShallWeAd 등록키" />
- <activity
-    android:name="com.co.shallwead.sdk.activity.ShallWeAdActivity"
-    android:excludeFromRecents="true"
-    android:launchMode="singleInstance"
-    android:taskAffinity=""
-    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
- */
 
 public class SubAdlibAdViewShallWeAd extends SubAdlibAdViewCore {
 	
-	protected ShallWeAdBannerForMediation ad;
+	protected ShallWeAdBanner ad;
 	protected boolean bGotAd = false;
 	
 	public SubAdlibAdViewShallWeAd(Context context) {
@@ -49,27 +24,19 @@ public class SubAdlibAdViewShallWeAd extends SubAdlibAdViewCore {
 	}
 	
 	public void initSwaView() {
-		ad = new ShallWeAdBannerForMediation(getContext());
+		ad = new ShallWeAdBanner(getContext());
 		ad.setShallWeAdBannerListener(new ShallWeAdBannerListener() {
 			@Override
 			public void onShowBannerResult(boolean pResult) {
-				
 				bGotAd = true;
 				if(!pResult) {
-                    
-					// 무료광고를 받아왔으면 다음 플랫폼으로 넘깁니다.
 					failed();
-				}
-				else {
-					if(ad != null) {
-						SubAdlibAdViewShallWeAd.this.removeAllViews();
-						SubAdlibAdViewShallWeAd.this.addView(ad);
-						
-						gotAd();
-					}
+				} else {
+					gotAd();
 				}
 			}
 		});
+		this.addView(ad);
 	}
 
 	// 스케줄러에의해 자동으로 호출됩니다.
@@ -81,8 +48,6 @@ public class SubAdlibAdViewShallWeAd extends SubAdlibAdViewCore {
 			initSwaView();
 		
 		queryAd();
-		
-		ad.loadBanner();
 		
 		// 5초 이상 리스너 응답이 없으면 다음 플랫폼으로 넘어갑니다.
 		Handler adHandler = new Handler();
@@ -111,7 +76,6 @@ public class SubAdlibAdViewShallWeAd extends SubAdlibAdViewCore {
 			SubAdlibAdViewShallWeAd.this.removeAllViews();
 			ad = null;
 		}
-
 		super.clearAdView();
 	}
 	
@@ -128,7 +92,6 @@ public class SubAdlibAdViewShallWeAd extends SubAdlibAdViewCore {
 			SubAdlibAdViewShallWeAd.this.removeAllViews();
 			ad = null;
 		}
-		
 		super.onDestroy();
 	}
 }

@@ -1,14 +1,3 @@
-/*
- * adlibr - Library for mobile AD mediation.
- * http://adlibr.com
- * Copyright (c) 2012-2013 Mocoplex, Inc.  All rights reserved.
- * Licensed under the BSD open source license.
- */
-
-/*
- * confirmed compatible with cauly SDK 3.4.11
- */
-
 package test.adlib.project.ads;
 
 import android.app.Activity;
@@ -36,8 +25,6 @@ public class SubAdlibAdViewCauly extends SubAdlibAdViewCore implements com.fsn.c
 	// 여기에 CAULY ID를 입력합니다.
 	protected String caulyID = "CAULY_ID";
 	protected static String caulyInterstitialID = "CAULY_Interstitial_ID";
-	
-	protected static Handler intersHandler = null;
 	
 	public SubAdlibAdViewCauly(Context context) {
 		this(context,null);
@@ -187,60 +174,50 @@ public class SubAdlibAdViewCauly extends SubAdlibAdViewCore implements com.fsn.c
 		super.onPause();
 	}
 	
-	static CaulyInterstitialAdListener intersListener = new CaulyInterstitialAdListener() {
-
-		@Override
-		public void onReceiveInterstitialAd(CaulyInterstitialAd ad, boolean arg1) {
-			
-			try{
- 				if(intersHandler != null){
- 					intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.DID_SUCCEED, "CAULY"));
- 				}
- 				
- 				ad.show();
-			}catch(Exception e){
-			}
-		}
-		
-		@Override
-		public void onFailedToReceiveInterstitialAd(CaulyInterstitialAd ad, int errCode, String errMsg) {
-			
-			try{
- 				if(intersHandler != null){
- 					intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.DID_ERROR, "CAULY"));
- 				}
-			}catch(Exception e){
-			}
-		}
-		
-		@Override
-		public void onClosedInterstitialAd(CaulyInterstitialAd ad) {
-			
-			try{
- 				// 전면광고 닫혔다.
- 				if(intersHandler != null){
- 					intersHandler.sendMessage(Message.obtain(intersHandler, AdlibManager.INTERSTITIAL_CLOSED, "CAULY"));
- 				} 				   		 					
-			}catch(Exception e){
-			}					
-			
-		}
-		
-		@Override
-		public void onLeaveInterstitialAd(CaulyInterstitialAd ad) {
-			
-		}
-    };
-	
 	public static void loadInterstitial(Context ctx, final Handler h, final String adlibKey) {
 		// CaulyAdInfo 생성
 	    CaulyAdInfo adInfo = new CaulyAdInfoBuilder(caulyInterstitialID).build();
 	    // 전면 광고 생성
 	    CaulyInterstitialAd interstial = new CaulyInterstitialAd();
 	    interstial.setAdInfo(adInfo);
-	    intersHandler = h;
-	    interstial.setInterstialAdListener(intersListener);
-	    
+	    interstial.setInterstialAdListener(new CaulyInterstitialAdListener() {
+			@Override
+			public void onReceiveInterstitialAd(CaulyInterstitialAd ad, boolean arg1) {
+				try{
+					if(h != null){
+						h.sendMessage(Message.obtain(h, AdlibManager.DID_SUCCEED, "CAULY"));
+					}
+
+					ad.show();
+				}catch(Exception e){
+				}
+			}
+
+			@Override
+			public void onFailedToReceiveInterstitialAd(CaulyInterstitialAd ad, int errCode, String errMsg) {
+				try{
+					if(h != null){
+						h.sendMessage(Message.obtain(h, AdlibManager.DID_ERROR, "CAULY"));
+					}
+				}catch(Exception e){
+				}
+			}
+
+			@Override
+			public void onClosedInterstitialAd(CaulyInterstitialAd ad) {
+				try{
+					// 전면광고 닫혔다.
+					if(h != null){
+						h.sendMessage(Message.obtain(h, AdlibManager.INTERSTITIAL_CLOSED, "CAULY"));
+					}
+				}catch(Exception e){
+				}
+			}
+
+			@Override
+			public void onLeaveInterstitialAd(CaulyInterstitialAd ad) {
+			}
+		});
 	    // 광고 요청. 광고 노출은 CaulyInterstitialAdListener의 onReceiveInterstitialAd에서 처리한다.
 	    interstial.requestInterstitialAd((Activity)ctx); // 전면 광고 노출 플래그 활성화
 	}
