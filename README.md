@@ -40,6 +40,7 @@
 |ShallWeAd|v1.12_20181031|<a href="http://www.shallweadcorp.com/main/developer_01?pageNum=2&subNum=1" target="_blank">다운로드</a>|
 |T-ad(Syrup Ad/Dawin Click)|v3.16.7|<a href="https://click.dawin.tv/poc/#/sdk" target="_blank">다운로드</a>|
 |TNK|v6.50|<a href="http://docs.tnkad.net/tnk-ad-sdk/sdk-guide" target="_blank">다운로드</a>|
+|Mezzo MANPLUS|v1.0.6|<a href="https://publisher.man-plus.com/Service/about/about_aplus_advertiser" target="_blank">다운로드</a>|
 
 
 ## 개발환경
