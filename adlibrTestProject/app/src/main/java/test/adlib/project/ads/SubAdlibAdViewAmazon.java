@@ -28,12 +28,15 @@ public class SubAdlibAdViewAmazon extends SubAdlibAdViewCore {
 	}
 	
 	public SubAdlibAdViewAmazon(Context context, AttributeSet attrs) {
-		
 		super(context, attrs);
-		
 		initAmazonView();
 	}
-	
+
+	public SubAdlibAdViewAmazon(Context context, int size) {
+		super(context, null);
+		failed();
+	}
+
 	public void initAmazonView() {
 		// For debugging purposes enable logging, but disable for production builds
         AdRegistration.enableLogging(false);

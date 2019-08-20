@@ -5,6 +5,8 @@ public enum AdlibTestListItem {
     BANNER_HEADER("Banner", true),
     BANNER_MEDIATION("Mediation"),
     BANNER_DYNAMIC("Dynamic"),
+    HALF_HEADER("Half", true),
+    HALF_MEDIATION("Mediation"),
     INTERSTITIAL_HEADER("Interstitial", true),
     INTERSTITIAL_MEDIATION("Mediation"),
     INTERSTITIAL_DYNAMIC("Dynamic");

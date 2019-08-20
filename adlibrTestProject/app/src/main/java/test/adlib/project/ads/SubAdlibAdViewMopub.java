@@ -25,16 +25,59 @@ public class SubAdlibAdViewMopub extends SubAdlibAdViewCore {
 
 	// 여기에 MOPUB ID 를 입력하세요.
 	protected String mopubID = "MOPUB_ID";
+	protected String mopubID_mrect = "MOPUB_HALF_ID";
 	protected static String mopubInterstitialID = "MOPUB_INTERSTITIAL_ID";
-	
+
+	public SubAdlibAdViewMopub(Context context) {
+		this(context,null);
+	}
+
+	public SubAdlibAdViewMopub(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		bannerSize = SIZE_BANNER;
+		initConfig();
+	}
+
+	public SubAdlibAdViewMopub(Context context, int size) {
+		super(context, null);
+		bannerSize = size;
+		initConfig();
+	}
+
+	protected void initConfig() {
+		SdkConfiguration sdkConfiguration;
+		if (bannerSize == SIZE_HALF) {
+			sdkConfiguration = new SdkConfiguration.Builder(mopubID_mrect).build();
+		} else {
+			sdkConfiguration = new SdkConfiguration.Builder(mopubID).build();
+		}
+		MoPub.initializeSdk(getContext(), sdkConfiguration, new SdkInitializationListener() {
+			@Override
+			public void onInitializationFinished() {
+				// MoPub 초기화 후 바로 MoPubView 초기화 하는 경우 정상 동작 안하는 문제로 100ms 딜레이
+				Handler adHandler = new Handler();
+				adHandler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						initMobpubView();
+					}
+				}, 100);
+			}
+		});
+	}
+
 	protected void initMobpubView() {
 		isInitSDK = true;
 		ad = new MoPubView(getContext());
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		ad.setLayoutParams(params);
-		
-		ad.setAdUnitId(mopubID); // Enter your Ad Unit ID from www.mopub.com
-		
+
+		if (bannerSize == SIZE_HALF) {
+			ad.setAdUnitId(mopubID_mrect); // Enter your Ad Unit ID from www.mopub.com
+		} else {
+			ad.setAdUnitId(mopubID); // Enter your Ad Unit ID from www.mopub.com
+		}
+
 		// 광고 뷰의 위치 속성을 제어할 수 있습니다.
 		this.setGravity(Gravity.CENTER);
 		
@@ -68,29 +111,6 @@ public class SubAdlibAdViewMopub extends SubAdlibAdViewCore {
 		});		
 	}
 
-	public SubAdlibAdViewMopub(Context context) {
-		this(context,null);		
-	}	
-	
-	public SubAdlibAdViewMopub(Context context, AttributeSet attrs) {
-		super(context, attrs);
-
-		SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(mopubID).build();
-		MoPub.initializeSdk(getContext(), sdkConfiguration, new SdkInitializationListener() {
-			@Override
-			public void onInitializationFinished() {
-				// MoPub 초기화 후 바로 MoPubView 초기화 하는 경우 정상 동작 안하는 문제로 100ms 딜레이
-				Handler adHandler = new Handler();
-				adHandler.postDelayed(new Runnable() {
-					@Override
-					public void run() {
-						initMobpubView();
-					}
-				}, 100);
-			}
-		});
-	}
-	
 	// 스케줄러에의해 자동으로 호출됩니다.
 	// 실제로 광고를 보여주기 위하여 요청합니다.
 	public void query() {

@@ -33,7 +33,12 @@ public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 		super(context, attrs);
 		initAdmixerView();
 	}
-	
+
+	public SubAdlibAdViewAdmixer(Context context, int size) {
+		super(context, null);
+		failed();
+	}
+
 	public void initAdmixerView() {
 		AdInfo adInfo = new AdInfo(admixerID); // AxKey 값 설정
 		//adInfo.setTestMode(true); // 테스트 모드 설정
@@ -48,7 +53,7 @@ public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 
 			@Override
 			public void onClickedAd(String arg0, AdView arg1) {
-				
+
 			}
 
 			@Override
@@ -67,8 +72,8 @@ public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 		
 		});
 //		ad.setAdapterOption(AdAdapter.ADAPTER_CAULY, "allow_call", "yes"); // Cauly 콜 광고 여부 설정
-		ad.setAdapterOption(AdAdapter.ADAPTER_ADMIXER_RTB, "bannerHeight", "fixed");
-		ad.setAlwaysShowAdView(false); // 광고 로딩 전에도 영역을 차지할 것인지 설정(false – 기본값)
+		//ad.setAdapterOption(AdAdapter.ADAPTER_ADMIXER_RTB, "bannerHeight", "fixed");
+		//ad.setAlwaysShowAdView(false); // 광고 로딩 전에도 영역을 차지할 것인지 설정(false – 기본값)
 		
 		this.addView(ad);
 	}

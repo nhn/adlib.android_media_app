@@ -29,7 +29,12 @@ public class SubAdlibAdViewMobclix extends SubAdlibAdViewCore {
 		
 		initAxonixView();
 	}
-	
+
+	public SubAdlibAdViewMobclix(Context context, int size) {
+		super(context, null);
+		failed();
+	}
+
 	public void initAxonixView() {
 		ad = new AxonixMMABannerXLAdView(getContext());
 		

@@ -22,7 +22,12 @@ public class SubAdlibAdViewShallWeAd extends SubAdlibAdViewCore {
 		
 		initSwaView();
 	}
-	
+
+	public SubAdlibAdViewShallWeAd(Context context, int size) {
+		super(context, null);
+		failed();
+	}
+
 	public void initSwaView() {
 		ad = new ShallWeAdBanner(getContext());
 		ad.setShallWeAdBannerListener(new ShallWeAdBannerListener() {

@@ -45,10 +45,14 @@ public class SubAdlibAdViewInmobi extends SubAdlibAdViewCore {
 	
 	public SubAdlibAdViewInmobi(Context context, AttributeSet attrs) {
 		super(context, attrs);
-
         InMobiSdk.init((Activity) context, inmobiAccountId);
 	}
-	
+
+	public SubAdlibAdViewInmobi(Context context, int size) {
+		super(context, null);
+        failed();
+	}
+
 	public void initInmobiView() {
 		// 원하는 크기의 배너 크기를 설정하세요.
 		ad = new InMobiBanner((Activity)this.getContext(), inmobiPlacementId);

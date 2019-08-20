@@ -2,6 +2,7 @@
 
 |버전|내용|
 |---|---|
+|5.1.0.0<br/>(2019.08.20)|300X250(하프 배너) 광고 영역 추가<br>SDK 내부 개선<br/>|
 |5.0.0.2<br/>(2019.04.05)|구글 플레이스토어 앱 마켓 랜딩 개선<br>구형 단말기에서 전면배너 뷰의 잘림현상 개선<br>같은 플랫폼에서 광고가 연속적으로 노출될 때 리스너를 다시 주지 않는 현상 수정<br>|
 |5.0.0.1<br/>(2018.12.10)|이용자 단말로부터 수집하는 데이터 항목 축소<br>|
 |5.0.0.0<br/>(2018.06.12)|미디에이션 워터폴 방식 변경(광고 노출 성공하는 경우 스케쥴 index 초기화) <br>중지된 미디에이션 삭제 <br>샘플 프로젝트 업데이트 <br>|
@@ -188,6 +189,44 @@ adlibManager.setAdsHandler(new Handler() {
                     break;
                 case AdlibManager.BANNER_FAILED:
                     Log.d("ADLIBr", "[Banner] All Failed.");
+                    break;
+            }
+        } catch (Exception e) {
+
+        }
+    }
+});
+
+adlibManager.setAdsContainer(R.id.ads);
+```
+
+### 하프 배너 연동
+
+- 애드립 기본 하프배너
+
+```java
+// 각 애드립 액티비티에 애드립 앱 키값을 필수로 넣어주어야 합니다.
+adlibManager = new AdlibManager(AdlibTestProjectConstants.ADLIB_API_KEY);
+adlibManager.onCreate(this);
+adlibManager.setBannerSize(SubAdlibAdViewCore.SIZE_HALF);
+// 테스트 광고 노출로, 상용일 경우 꼭 제거해야 합니다.
+adlibManager.setAdlibTestMode(AdlibTestProjectConstants.ADLIB_TEST_MODE);
+// 배너 스케쥴에 등록된 광고 모두 광고 요청 실패 시 대기 시간 설정(단위:초, 기본:10초, 최소:1초)
+// adlibManager.setBannerFailDelayTime(10);
+
+// 이벤트 핸들러 등록
+adlibManager.setAdsHandler(new Handler() {
+    public void handleMessage(Message message) {
+        try {
+            switch (message.what) {
+                case AdlibManager.DID_SUCCEED:
+                    Log.d("ADLIBr", "[Half] onReceiveAd " + (String) message.obj);
+                    break;
+                case AdlibManager.DID_ERROR:
+                    Log.d("ADLIBr", "[Half] onFailedToReceiveAd " + (String) message.obj);
+                    break;
+                case AdlibManager.BANNER_FAILED:
+                    Log.d("ADLIBr", "[Half] All Failed.");
                     break;
             }
         } catch (Exception e) {

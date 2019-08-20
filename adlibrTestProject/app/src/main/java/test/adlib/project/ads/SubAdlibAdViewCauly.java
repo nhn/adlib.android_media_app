@@ -32,10 +32,14 @@ public class SubAdlibAdViewCauly extends SubAdlibAdViewCore implements com.fsn.c
 
 	public SubAdlibAdViewCauly(Context context, AttributeSet attrs) {
 		super(context, attrs);
-
 		initCaulyView();
 	}
-	
+
+	public SubAdlibAdViewCauly(Context context, int size) {
+		super(context, null);
+		failed();
+	}
+
 	public void initCaulyView() {
 		/* 애니메이션 effect
 		 * LeftSlide(기본) : 왼쪽에서 오른쪽으로 슬라이드 

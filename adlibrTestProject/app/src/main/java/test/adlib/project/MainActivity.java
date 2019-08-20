@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import test.adlib.project.banner.AdlibBannerDynamicActivity;
 import test.adlib.project.banner.AdlibBannerMediationActivity;
+import test.adlib.project.half.AdlibHalfMediationActivity;
 import test.adlib.project.interstitial.AdlibIntersDynamicActivity;
 import test.adlib.project.interstitial.AdlibIntersMediationActivity;
 
@@ -42,6 +43,10 @@ public class MainActivity extends Activity {
         itemList.add(AdlibTestListItem.BANNER_MEDIATION);
         itemList.add(AdlibTestListItem.BANNER_DYNAMIC);
 
+        // 하프 샘플
+        itemList.add(AdlibTestListItem.HALF_HEADER);
+        itemList.add(AdlibTestListItem.HALF_MEDIATION);
+
         // 전면배너 샘플
         itemList.add(AdlibTestListItem.INTERSTITIAL_HEADER);
         itemList.add(AdlibTestListItem.INTERSTITIAL_MEDIATION);
@@ -63,6 +68,10 @@ public class MainActivity extends Activity {
                         break;
                     case BANNER_DYNAMIC:
                         intent = new Intent(MainActivity.this, AdlibBannerDynamicActivity.class);
+                        break;
+
+                    case HALF_MEDIATION:
+                        intent = new Intent(MainActivity.this, AdlibHalfMediationActivity.class);
                         break;
 
                     case INTERSTITIAL_MEDIATION:
@@ -94,7 +103,7 @@ public class MainActivity extends Activity {
 
         @Override
         public int getViewTypeCount() {
-            return 2;
+            return 3;
         }
 
         @Override

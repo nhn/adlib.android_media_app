@@ -18,7 +18,8 @@ public class SubAdlibAdViewAdam extends SubAdlibAdViewCore {
     protected boolean bGotAd = false;
 
     // 여기에 ADAM ID 를 입력하세요.
-    protected String adamID = "Adam_ID";
+    protected String adfitID = "Adam_ID";
+    protected String adfitID_mrect = "Adam_ID";
 
     public SubAdlibAdViewAdam(Context context) {
         this(context, null);
@@ -26,10 +27,17 @@ public class SubAdlibAdViewAdam extends SubAdlibAdViewCore {
 
     public SubAdlibAdViewAdam(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initAdamView();
+        bannerSize = SIZE_BANNER;
+        initAdfitView();
     }
 
-    public void initAdamView() {
+    public SubAdlibAdViewAdam(Context context, int size) {
+        super(context, null);
+        bannerSize = size;
+        initAdfitView();
+    }
+
+    public void initAdfitView() {
         // AdFit 광고 뷰 생성 및 설정
         ad = new BannerAdView(getContext());
 
@@ -62,7 +70,12 @@ public class SubAdlibAdViewAdam extends SubAdlibAdViewCore {
         });
 
         // 할당 받은 clientId 설정
-        ad.setClientId(adamID);
+        if (bannerSize == SIZE_HALF) {
+            ad.setClientId(adfitID_mrect);
+        } else {
+            ad.setClientId(adfitID);
+        }
+        ad.setTestMode(true);
         ad.setVisibility(View.VISIBLE);
 
         this.addView(ad);
@@ -75,7 +88,7 @@ public class SubAdlibAdViewAdam extends SubAdlibAdViewCore {
 
         bGotAd = false;
 
-        if (ad == null) initAdamView();
+        if (ad == null) initAdfitView();
 
         queryAd();
 

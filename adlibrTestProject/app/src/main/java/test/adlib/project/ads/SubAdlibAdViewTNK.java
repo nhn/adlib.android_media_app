@@ -20,7 +20,12 @@ public class SubAdlibAdViewTNK extends SubAdlibAdViewCore {
 	public SubAdlibAdViewTNK(final Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
-	
+
+	public SubAdlibAdViewTNK(final Context context, int size) {
+		super(context, null);
+		failed();
+	}
+
 	public void query() {
 		failed();
 	}

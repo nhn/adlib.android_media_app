@@ -34,7 +34,12 @@ public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 		MMSDK.initialize((Activity)context);
 		initMmediaView();
 	}
-	
+
+	public SubAdlibAdViewMMedia(Context context, int size) {
+		super(context, null);
+		failed();
+	}
+
 	public void initMmediaView() {
 		try {
 			ad = InlineAd.createInstance(mMediaID, this);

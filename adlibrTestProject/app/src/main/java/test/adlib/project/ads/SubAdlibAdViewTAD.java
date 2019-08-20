@@ -29,15 +29,18 @@ public class SubAdlibAdViewTAD extends SubAdlibAdViewCore {
 	
 	public SubAdlibAdViewTAD(Context context) {
 		this(context,null);
-        
 	}
 	
 	public SubAdlibAdViewTAD(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		
         initTadView();
 	}
-    
+
+	public SubAdlibAdViewTAD(Context context, int size) {
+		super(context, null);
+		failed();
+	}
+
     public void initTadView() {
 		ad = new com.skplanet.tad.AdView((Activity) this.getContext());
 		ad.setClientId(tAdId);

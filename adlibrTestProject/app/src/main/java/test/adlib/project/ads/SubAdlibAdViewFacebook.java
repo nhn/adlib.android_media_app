@@ -30,12 +30,15 @@ public class SubAdlibAdViewFacebook extends SubAdlibAdViewCore {
 	}
 	
 	public SubAdlibAdViewFacebook(Context context, AttributeSet attrs) {
-		
 		super(context, attrs);
-		
 		initFacebookView();
 	}
-	
+
+	public SubAdlibAdViewFacebook(Context context, int size) {
+		super(context, null);
+		failed();
+	}
+
 	public void initFacebookView() {
 		ad = new AdView(getContext(), facebookID, AdSize.BANNER_HEIGHT_50);
 		ad.setAdListener( new AdListener() {

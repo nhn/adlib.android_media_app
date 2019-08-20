@@ -60,6 +60,10 @@ public class SubAdlibAdViewMezzo extends SubAdlibAdViewCore {
         });
     }
 
+    public SubAdlibAdViewMezzo(Context context, int size) {
+        super(context, null);
+        failed();
+    }
     // 스케줄러에의해 자동으로 호출됩니다.
     // 실제로 광고를 보여주기 위하여 요청합니다.
     public void query() {

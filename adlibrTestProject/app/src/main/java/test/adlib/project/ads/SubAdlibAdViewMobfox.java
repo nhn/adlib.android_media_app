@@ -32,6 +32,11 @@ public class SubAdlibAdViewMobfox extends SubAdlibAdViewCore {
         initMobfoxView();
     }
 
+    public SubAdlibAdViewMobfox(Context context, int size) {
+        super(context, null);
+        failed();
+    }
+
     public void initMobfoxView() {
         Banner.Listener bannerListener = new Banner.Listener() {
             @Override
