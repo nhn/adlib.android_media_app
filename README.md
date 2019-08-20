@@ -69,9 +69,12 @@ android {
 dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation 'com.android.support:multidex:1.0.3'
+  implementation 'com.google.android.gms:play-services-base:16.1.0'
+  implementation 'com.google.android.gms:play-services-ads:17.2.0'
 }
 ```
 - 'com.android.support:multidex:1.0.3' : 안드로이드의 메서드 제한 오류를 해결하기 위한 라이브러리 추가.
+- 'com.google.android.gms:play-services-base:16.1.0', 'com.google.android.gms:play-services-ads:17.2.0' : 안드로이드에서 광고 설정에 필요한 설정입니다. 미디에이션을 사용한다면 각 플랫폼 가이드에 따라 추가해주시기 바랍니다
 
 #### 단계3. AndroidManifest 설정
 ```XML
