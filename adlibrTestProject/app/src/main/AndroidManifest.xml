@@ -187,6 +187,11 @@
         <activity
             android:name=".interstitial.AdlibIntersDynamicActivity"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".half.AdlibHalfMediationActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
