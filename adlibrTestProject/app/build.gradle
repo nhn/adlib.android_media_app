@@ -52,5 +52,9 @@ dependencies {
     implementation(name: 'millennialMedia-sdk-6.8.3', ext: 'aar')
 
     // MobFox
-    implementation 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.6.9'
+    // NOTE: 19.09.17
+    // https://s3.amazonaws.com/moat-sdk-builds/~ 에서 403응답으로 SDK를 다운받을 수 없는 문제 => jar파일 직접 연동으로 변경
+//    implementation 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.6.9'
+    implementation files('libs/MobFox-Android-SDK-Core-3.6.9.jar')
+
 }
