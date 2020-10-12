@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId 'test.adlib.project'
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         multiDexEnabled true // Fixed com.android.dex.DexIndexOverflowException: method ID not in [0, 0xffff]: 65536
