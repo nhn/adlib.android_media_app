@@ -23,6 +23,15 @@ allprojects {
         maven { url "https://s3.amazonaws.com/moat-sdk-builds" }  // mopub
         maven { url 'https://maven.google.com' } // necessary for Android API 26
 
+        // cauly
+        maven {
+            url "s3://repo.cauly.net/releases"
+            credentials(AwsCredentials) {
+                accessKey "AKIAWRZUK5MFKYVSUOLB"
+                secretKey "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"
+            }
+        }
+
         flatDir {
             dirs 'libs'
         }

@@ -77,11 +77,11 @@
 }
 
 # Cauly 사용을 위한 설정입니다.
--keep public class com.fsn.cauly.** {
-	public protected *;
+-keep class com.fsn.cauly.** {
+	   public *; protected *;
 }
--keep public class com.trid.tridad.** {
-	public protected *;
+-keep class com.trid.tridad.** {
+  	  public *; protected *;
 }
 -dontwarn android.webkit.**
 -keep class test.adlib.project.ads.SubAdlibAdViewCauly { *; }
