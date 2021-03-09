@@ -7,12 +7,11 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.admixer.AdAdapter;
-import com.admixer.AdInfo;
-import com.admixer.AdView;
-import com.admixer.AdViewListener;
-import com.admixer.InterstitialAd;
-import com.admixer.InterstitialAdListener;
+import com.admixer.ads.AdInfo;
+import com.admixer.ads.AdView;
+import com.admixer.ads.AdViewListener;
+import com.admixer.ads.InterstitialAd;
+import com.admixer.ads.InterstitialAdListener;
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
 
@@ -41,8 +40,6 @@ public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 
 	public void initAdmixerView() {
 		AdInfo adInfo = new AdInfo(admixerID); // AxKey 값 설정
-		//adInfo.setTestMode(true); // 테스트 모드 설정
-		adInfo.setDefaultAdTime(0);    // 최소 디폴트 광고 표시 시간(milliseconds)
 		adInfo.setMaxRetryCountInSlot(-1);  // 리로드 시간 내에 전체 AdNetwork 반복 최대 횟수(-1 : 무한, 0 : 반복 없음, n : n번 반복)
 		
 		ad = new AdView(this.getContext());
@@ -88,7 +85,7 @@ public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 		
 		queryAd();
 
-		ad.resume();
+		ad.onResume();
 		
 		// 3초 이상 리스너 응답이 없으면 다음 플랫폼으로 넘어갑니다.
 		Handler adHandler = new Handler();
@@ -100,7 +97,7 @@ public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 					return;
 				}else{
 					if(ad != null)
-						ad.pause();
+						ad.onPause();
 					failed();
 				}
 			}
@@ -121,7 +118,7 @@ public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 	
 	public void onResume() {		
 		if(ad != null){
-			ad.resume();
+			ad.onResume();
 		}
         
         super.onResume();
@@ -129,7 +126,7 @@ public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 	
 	public void onPause() {
 		if(ad != null){
-			ad.pause();
+			ad.onPause();
 		}
         
         super.onPause();
@@ -148,7 +145,6 @@ public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 		AdInfo adInfo = new AdInfo(admixerInterstitialID); // AxKey 값 설정
 		adInfo.setInterstitialTimeout(0);   // 초단위로 전면 광고 타이아웃 설정(기본값 : 0, 0 이면 서버 지정 시간으로 처리됨)
 		adInfo.setMaxRetryCountInSlot(-1);  // 리로드 시간 내에 전체 AdNetwork 반복 최대 횟수(-1 : 무한, 0 : 반복 없음, n : n번 반복)
-		//adInfo.setTestMode(true); // 테스트 모드 설정
 		InterstitialAd interstitialAd = new InterstitialAd(ctx);// 전면 광고 생성
 		interstitialAd.setAdInfo(adInfo, (Activity)ctx);
 		interstitialAd.setInterstitialAdListener(new InterstitialAdListener() {
