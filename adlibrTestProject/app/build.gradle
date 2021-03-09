@@ -29,7 +29,7 @@ dependencies {
     implementation 'androidx.multidex:multidex:2.0.0'
 
     //ADFit
-    implementation 'com.kakao.adfit:ads-base:3.0.8'
+    implementation 'com.kakao.adfit:ads-base:3.7.0'
 
     // ADMOB
     implementation 'com.google.android.gms:play-services-ads:17.2.0'
