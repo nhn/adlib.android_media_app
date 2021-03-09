@@ -36,6 +36,7 @@
 # 사용하지 않을 광고 플랫폼 설정은 삭제하셔도 됩니다.
 
 # Inmobi 사용을 위한 설정입니다.
+-keepattributes SourceFile,LineNumberTable
 -keep class com.inmobi.** { *; }
 -dontwarn com.inmobi.**
 -keep public class com.google.android.gms.**
@@ -53,13 +54,16 @@
 -dontwarn com.squareup.picasso.**
 -dontwarn com.squareup.okhttp.**
 
+# skip IAB classes
+-keep class com.iab.** {*;}
+-dontwarn com.iab.**
+
 ## skip Moat classes
 -keep class com.moat.** {*;}
 -dontwarn com.moat.**
 
 ## skip AVID classes
 -keep class com.integralads.avid.library.* {*;}
-
 # Inmobi 사용을 위한 설정입니다. -- END
 
 # Adam(Adfit) 사용을 위한 설정입니다.
