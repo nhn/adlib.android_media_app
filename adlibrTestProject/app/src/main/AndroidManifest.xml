@@ -64,17 +64,6 @@
         <!-- ADMOB -->
 
 
-        <!-- INMOBI - 광고 노출을 위해 필요한 선언입니다. -->
-        <activity
-            android:name="com.inmobi.ads.rendering.InMobiAdActivity"
-            android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize|screenLayout"
-            android:hardwareAccelerated="true"
-            android:resizeableActivity="false"
-            android:theme="@android:style/Theme.NoTitleBar"
-            tools:ignore="UnusedAttribute"/>
-        <!-- INMOBI -->
-
-
         <!-- MILLENNIAL MEDIA - 광고 노출을 위해 필요한 선언입니다. -->
         <provider
             android:name="com.millennialmedia.internal.utils.MediaContentProvider"
