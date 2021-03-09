@@ -93,16 +93,6 @@
 -keep class com.millennialmedia**
 -keep class test.adlib.project.ads.SubAdlibAdViewMMedia { *; }
 
-# Mobclix 사용을 위한 설정입니다.
--keep public class com.mobclix.android.sdk.* { *; }
--keep class test.adlib.project.ads.SubAdlibAdViewMobclix { *; }
-
-# ShallWeAd 사용을 위한 설정입니다.
--keep class com.jm.co.shallwead.sdk.** {
-  public *;
-}
--keep class test.adlib.project.ads.SubAdlibAdViewShallWeAd { *; }
-
 # Tad 사용을 위한 설정입니다.
 -keep class com.skplanet.tad.** { *; }
 -keep class test.adlib.project.ads.SubAdlibAdViewTAD { *; }

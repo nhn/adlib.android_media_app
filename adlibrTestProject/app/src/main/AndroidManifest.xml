@@ -70,14 +70,6 @@
             tools:ignore="UnusedAttribute"/>
         <!-- INMOBI -->
 
-
-        <!-- SHALLWEAD - 광고 노출을 위해 필요한 선언입니다. -->
-        <meta-data
-            android:name="ShallWeAd_Application_Key"
-            android:value="발급받은 ShallWeAd 등록키"/>
-        <!-- SHALLWEAD -->
-
-
         <!-- MILLENNIAL MEDIA - 광고 노출을 위해 필요한 선언입니다. -->
         <provider
             android:name="com.millennialmedia.internal.utils.MediaContentProvider"
@@ -85,19 +77,6 @@
             android:grantUriPermissions="true"
             android:exported="false" />
         <!-- MILLENNIAL MEDIA -->
-
-
-        <!-- AXONIX(MOBCLIX) - 광고 노출을 위해 필요한 선언입니다. -->
-        <!-- Add the application key -->
-        <meta-data
-            android:name="com.axonix.APPLICATION_ID"
-            android:value="발급받은 AXONIX(MOBCLIX) 등록키"/>
-        <!-- Axonix browser activity -->
-        <activity
-            android:name="com.axonix.android.sdk.AxonixBrowserActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@android:style/Theme.NoTitleBar"/>
-        <!-- AXONIX -->
 
         <!-- MEZZO MEDIA - 광고 노출을 위해 필요한 선언입니다. -->
         <meta-data
