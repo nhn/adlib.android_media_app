@@ -2,6 +2,7 @@
 
 |버전|내용|
 |---|---|
+|5.1.2<br/>(2021.03.11)|미디에이션 플랫폼 SDK 버전 업데이트<br>애드립SDK 개선|
 |5.1.2<br/>(2020.10.14)|샘플앱 targetSdkVersion 29 업데이트<br>애드립SDK 내에서 사용중이었던 non-SDK interface 수정<br>|
 |5.1.1<br/>(2019.10.22)|AOS 8.0(Oreo) 버전에서 일부 전면배너 노출 이슈 등 SDK 버그 픽스<br>Mobfox 라이브러리 연동 이슈 수정<br/>|
 |5.1.0.0<br/>(2019.08.20)|300X250(하프 배너) 광고 영역 추가<br>SDK 내부 개선<br/>|
@@ -20,21 +21,19 @@
 
 |플랫폼|버전|SDK 다운로드|
 |---|:---:|:---:|
-|AdMixer|v1.4.6|<a href="http://www.admixer.co.kr/" target="_blank">다운로드</a>|
-|Adfit(Adam)|v3.0.8|<a href="https://github.com/adfit/adfit-android-sdk" target="_blank">다운로드</a>|
+|AdMixer|v2.1.3|<a href="http://www.admixer.co.kr/" target="_blank">다운로드</a>|
+|Adfit(Adam)|v3.7.0|<a href="https://github.com/adfit/adfit-android-sdk" target="_blank">다운로드</a>|
 |Admob|Google Play Version|<a href="https://developers.google.com/admob/android/quick-start" target="_blank">다운로드</a>|
-|Amazon|v5.9.0|<a href="https://developer.amazon.com/public/resources/development-tools/sdk" target="_blank">다운로드</a>|
-|Axonix(Mobclix)|v4.4.0|<a href="https://github.com/AxonixRTB/axonix-android-sdk-releases" target="_blank">다운로드</a>|
-|Cauly|v3.4.23|<a href="https://github.com/cauly/Android-SDK" target="_blank">다운로드</a>|
-|FaceBook|v5.3.0|<a href="https://developers.facebook.com/docs/audience-network/getting-started?locale=ko_KR" target="_blank">다운로드</a>|
-|Inmobi|v7.2.7|<a href="http://www.inmobi.com/products/sdk/" target="_blank">다운로드</a>|
+|Amazon|v6.0.0|<a href="https://developer.amazon.com/public/resources/development-tools/sdk" target="_blank">다운로드</a>|
+|Cauly|v3.5.14|<a href="https://github.com/cauly/Android-SDK" target="_blank">다운로드</a>|
+|FaceBook|v6.2.0|<a href="https://developers.facebook.com/docs/audience-network/getting-started?locale=ko_KR" target="_blank">다운로드</a>|
+|Inmobi|v9.1.1|<a href="http://www.inmobi.com/products/sdk/" target="_blank">다운로드</a>|
 |MillennialMedia|v6.8.3|<a href="http://docs.onemobilesdk.aol.com/android-ad-sdk/" target="_blank">다운로드</a>|
 |Mobfox|v3.6.9|<a href="https://github.com/mobfox/MobFox-Android-SDK" target="_blank">다운로드</a>|
 |Mopub|v5.6.0|<a href="https://developers.mopub.com/docs/android/getting-started/" target="_blank">다운로드</a>|
-|ShallWeAd|v1.12_20181031|<a href="http://www.shallweadcorp.com/main/developer_01?pageNum=2&subNum=1" target="_blank">다운로드</a>|
 |T-ad(Syrup Ad/Dawin Click)|v3.16.7|<a href="https://click.dawin.tv/poc/#/sdk" target="_blank">다운로드</a>|
-|TNK|v6.50|<a href="http://docs.tnkad.net/tnk-ad-sdk/sdk-guide" target="_blank">다운로드</a>|
-|Mezzo MANPLUS|v1.0.6|<a href="https://publisher.man-plus.com/Service/about/about_aplus_advertiser" target="_blank">다운로드</a>|
+|TNK|v6.61|<a href="http://docs.tnkad.net/tnk-ad-sdk/sdk-guide" target="_blank">다운로드</a>|
+|Mezzo MANPLUS|v200|<a href="https://publisher.man-plus.com/Service/about/about_aplus_advertiser" target="_blank">다운로드</a>|
 
 
 ## 개발환경
@@ -154,7 +153,6 @@ private void bindPlatform() {
     AdlibConfig.getInstance().bindPlatform("ADAM", "test.adlib.project.ads.SubAdlibAdViewAdam");
     AdlibConfig.getInstance().bindPlatform("ADMOB", "test.adlib.project.ads.SubAdlibAdViewAdmob");
     AdlibConfig.getInstance().bindPlatform("AMAZON", "test.adlib.project.ads.SubAdlibAdViewAmazon");
-    AdlibConfig.getInstance().bindPlatform("MOBCLIX", "test.adlib.project.ads.SubAdlibAdViewMobclix");
     AdlibConfig.getInstance().bindPlatform("CAULY", "test.adlib.project.ads.SubAdlibAdViewCauly");
     AdlibConfig.getInstance().bindPlatform("FACEBOOK", "test.adlib.project.ads.SubAdlibAdViewFacebook");
     AdlibConfig.getInstance().bindPlatform("INMOBI", "test.adlib.project.ads.SubAdlibAdViewInmobi");
@@ -162,7 +160,6 @@ private void bindPlatform() {
     AdlibConfig.getInstance().bindPlatform("MMEDIA", "test.adlib.project.ads.SubAdlibAdViewMMedia");
     AdlibConfig.getInstance().bindPlatform("MOBFOX", "test.adlib.project.ads.SubAdlibAdViewMobfox");
     AdlibConfig.getInstance().bindPlatform("MOPUB", "test.adlib.project.ads.SubAdlibAdViewMopub");
-    AdlibConfig.getInstance().bindPlatform("SHALLWEAD", "test.adlib.project.ads.SubAdlibAdViewShallWeAd");
     AdlibConfig.getInstance().bindPlatform("TAD", "test.adlib.project.ads.SubAdlibAdViewTAD");
     AdlibConfig.getInstance().bindPlatform("TNK", "test.adlib.project.ads.SubAdlibAdViewTNK");
 }
