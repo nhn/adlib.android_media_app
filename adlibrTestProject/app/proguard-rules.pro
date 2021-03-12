@@ -36,6 +36,7 @@
 # 사용하지 않을 광고 플랫폼 설정은 삭제하셔도 됩니다.
 
 # Inmobi 사용을 위한 설정입니다.
+-keepattributes SourceFile,LineNumberTable
 -keep class com.inmobi.** { *; }
 -dontwarn com.inmobi.**
 -keep public class com.google.android.gms.**
@@ -53,13 +54,16 @@
 -dontwarn com.squareup.picasso.**
 -dontwarn com.squareup.okhttp.**
 
+# skip IAB classes
+-keep class com.iab.** {*;}
+-dontwarn com.iab.**
+
 ## skip Moat classes
 -keep class com.moat.** {*;}
 -dontwarn com.moat.**
 
 ## skip AVID classes
 -keep class com.integralads.avid.library.* {*;}
-
 # Inmobi 사용을 위한 설정입니다. -- END
 
 # Adam(Adfit) 사용을 위한 설정입니다.
@@ -77,11 +81,11 @@
 }
 
 # Cauly 사용을 위한 설정입니다.
--keep public class com.fsn.cauly.** {
-	public protected *;
+-keep class com.fsn.cauly.** {
+	   public *; protected *;
 }
--keep public class com.trid.tridad.** {
-	public protected *;
+-keep class com.trid.tridad.** {
+  	  public *; protected *;
 }
 -dontwarn android.webkit.**
 -keep class test.adlib.project.ads.SubAdlibAdViewCauly { *; }
@@ -92,16 +96,6 @@
 }
 -keep class com.millennialmedia**
 -keep class test.adlib.project.ads.SubAdlibAdViewMMedia { *; }
-
-# Mobclix 사용을 위한 설정입니다.
--keep public class com.mobclix.android.sdk.* { *; }
--keep class test.adlib.project.ads.SubAdlibAdViewMobclix { *; }
-
-# ShallWeAd 사용을 위한 설정입니다.
--keep class com.jm.co.shallwead.sdk.** {
-  public *;
-}
--keep class test.adlib.project.ads.SubAdlibAdViewShallWeAd { *; }
 
 # Tad 사용을 위한 설정입니다.
 -keep class com.skplanet.tad.** { *; }

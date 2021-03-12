@@ -9,12 +9,12 @@ import android.view.Gravity;
 
 import com.mocoplex.adlib.AdlibManager;
 import com.mocoplex.adlib.SubAdlibAdViewCore;
-import com.skplanet.tad.AdView;
 import com.skplanet.tad.AdInterstitial;
 import com.skplanet.tad.AdInterstitialListener;
 import com.skplanet.tad.AdListener;
 import com.skplanet.tad.AdRequest.ErrorCode;
 import com.skplanet.tad.AdSlot;
+import com.skplanet.tad.AdView;
 import com.skplanet.tad.AdView.AnimationType;
 
 public class SubAdlibAdViewTAD extends SubAdlibAdViewCore {

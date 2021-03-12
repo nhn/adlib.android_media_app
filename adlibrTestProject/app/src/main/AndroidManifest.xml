@@ -16,18 +16,24 @@
     <!-- 플랫폼에 따라 권한을 추가하시기 바랍니다. (애드립의 필수는 아닙니다.) -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--  TODO: targetSDK 30 변경시, 아래 권한으로 변경 (Facebook Audience Network 가이드 및 각종 미디에이션 가이드 참고  -->
+    <!--    <uses-permission android:name="android.permission.READ_PHONE_STATE" android:maxSdkVersion="29" />-->
+    <!--    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />-->
+
     <!-- 플랫폼에 따라 권한을 추가하시기 바랍니다. (애드립의 필수는 아닙니다.) -->
     <application
         android:name=".AdlibSampleApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="AdlibSampleProject"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@android:style/Theme.NoTitleBar"
         android:usesCleartextTraffic="true"
-        tools:ignore="LockedOrientationActivity">
+        tools:ignore="LockedOrientationActivity"
+        tools:replace="label">
 
         <!-- 애드립 사용을 위해 꼭 추가해주세요. -->
         <activity
@@ -52,6 +58,7 @@
         </receiver>
         <!-- T-AD -->
 
+
         <!-- ADMOB - Google Play 버전을 위한 선언입니다. -->
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
         <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="발급받은 APPLICATION_ID"/>
@@ -59,23 +66,6 @@
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
         <!-- ADMOB -->
-
-        <!-- INMOBI - 광고 노출을 위해 필요한 선언입니다. -->
-        <activity
-            android:name="com.inmobi.rendering.InMobiAdActivity"
-            android:configChanges="keyboardHidden|orientation|keyboard|smallestScreenSize|screenSize|screenLayout"
-            android:hardwareAccelerated="true"
-            android:resizeableActivity="false"
-            android:theme="@android:style/Theme.NoTitleBar"
-            tools:ignore="UnusedAttribute"/>
-        <!-- INMOBI -->
-
-
-        <!-- SHALLWEAD - 광고 노출을 위해 필요한 선언입니다. -->
-        <meta-data
-            android:name="ShallWeAd_Application_Key"
-            android:value="발급받은 ShallWeAd 등록키"/>
-        <!-- SHALLWEAD -->
 
 
         <!-- MILLENNIAL MEDIA - 광고 노출을 위해 필요한 선언입니다. -->
@@ -86,18 +76,6 @@
             android:exported="false" />
         <!-- MILLENNIAL MEDIA -->
 
-
-        <!-- AXONIX(MOBCLIX) - 광고 노출을 위해 필요한 선언입니다. -->
-        <!-- Add the application key -->
-        <meta-data
-            android:name="com.axonix.APPLICATION_ID"
-            android:value="발급받은 AXONIX(MOBCLIX) 등록키"/>
-        <!-- Axonix browser activity -->
-        <activity
-            android:name="com.axonix.android.sdk.AxonixBrowserActivity"
-            android:hardwareAccelerated="true"
-            android:theme="@android:style/Theme.NoTitleBar"/>
-        <!-- AXONIX -->
 
         <!-- MEZZO MEDIA - 광고 노출을 위해 필요한 선언입니다. -->
         <meta-data
@@ -111,12 +89,6 @@
         <meta-data
             android:name="DEBUG_MODE"
             android:value="0"/>
-
-        <activity
-            android:name="com.mapps.android.view.InterstitialView"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
-            android:windowSoftInputMode="adjustPan"/>
         <!-- MEZZO MEDIA -->
 
 
@@ -144,6 +116,9 @@
         <activity
             android:name="com.mopub.mobileads.MraidVideoPlayerActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity
+            android:name="com.mopub.common.privacy.ConsentDialogActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
         <!-- MOPUB -->
 
 
@@ -164,6 +139,14 @@
             android:name="com.facebook.ads.AudienceNetworkActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"/>
         <!-- Facebook -->
+
+
+        <!-- Cauly Guide - Activity 형식의 전체 화면 랜딩을 지원하기 위해선 아래의 설정으로 추가 -->
+        <activity
+            android:name="com.fsn.cauly.blackdragoncore.LandingActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize">
+        </activity>
+        <!-- Cauly -->
 
 
         <!-- 애드립 샘플 -->

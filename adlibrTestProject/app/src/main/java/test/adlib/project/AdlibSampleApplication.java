@@ -1,6 +1,6 @@
 package test.adlib.project;
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 public class AdlibSampleApplication extends MultiDexApplication {
     @Override
