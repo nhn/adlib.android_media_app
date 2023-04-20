@@ -51,9 +51,11 @@
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
 
-        <receiver android:name="com.skplanet.tad.SyrupAdReceiver">
+        <receiver
+            android:name="com.skplanet.tad.SyrupAdReceiver"
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.skplanet.syrupad.action.SAID_CHANGED"/>
+                <action android:name="com.skplanet.syrupad.action.SAID_CHANGED" />
             </intent-filter>
         </receiver>
         <!-- T-AD -->
@@ -150,11 +152,13 @@
 
 
         <!-- 애드립 샘플 -->
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

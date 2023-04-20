@@ -1,5 +1,8 @@
 package test.adlib.project;
 
+import android.content.Context;
+
+import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
 public class AdlibSampleApplication extends MultiDexApplication {
@@ -11,4 +14,11 @@ public class AdlibSampleApplication extends MultiDexApplication {
         // 아래는 AudienceNetwork 가이드에 제시된 Helper 클래스를 사용한 예시.
         AudienceNetworkInitializeHelper.initialize(this);
     }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 }
