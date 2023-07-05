@@ -35,7 +35,7 @@ dependencies {
     implementation 'com.kakao.adfit:ads-base:3.7.0'
 
     // ADMOB
-    implementation 'com.google.android.gms:play-services-ads:17.2.0'
+    implementation 'com.google.android.gms:play-services-ads:22.1.0'
 
     // facebook audiencenetwork
     implementation 'com.facebook.android:audience-network-sdk:6.2.0'
@@ -45,12 +45,6 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-
-    // mopub For banners
-    implementation('com.mopub:mopub-sdk-banner:5.6.0@aar') { transitive = true }
-
-    // mopub For interstitials
-    implementation('com.mopub:mopub-sdk-interstitial:5.6.0@aar') { transitive = true }
 
     // MillenialMedia
     implementation(name: 'millennialMedia-sdk-6.8.3', ext: 'aar')

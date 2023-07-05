@@ -1,14 +1,15 @@
 # SDK Version History
 
-|버전|내용|
-|---|---|
-|5.1.4<br/>(2023.04.20)| 샘플앱 targetSdkVersion 31 업데이트<br>광고 API 도메인 수정<br>                                                   |
-|5.1.2<br/>(2020.10.14)|샘플앱 targetSdkVersion 29 업데이트<br>애드립SDK 내에서 사용중이었던 non-SDK interface 수정<br>|
-|5.1.1<br/>(2019.10.22)|AOS 8.0(Oreo) 버전에서 일부 전면배너 노출 이슈 등 SDK 버그 픽스<br>Mobfox 라이브러리 연동 이슈 수정<br/>|
-|5.1.0.0<br/>(2019.08.20)|300X250(하프 배너) 광고 영역 추가<br>SDK 내부 개선<br/>|
-|5.0.0.2<br/>(2019.04.05)|구글 플레이스토어 앱 마켓 랜딩 개선<br>구형 단말기에서 전면배너 뷰의 잘림현상 개선<br>같은 플랫폼에서 광고가 연속적으로 노출될 때 리스너를 다시 주지 않는 현상 수정<br>|
-|5.0.0.1<br/>(2018.12.10)|이용자 단말로부터 수집하는 데이터 항목 축소<br>|
-|5.0.0.0<br/>(2018.06.12)|미디에이션 워터폴 방식 변경(광고 노출 성공하는 경우 스케쥴 index 초기화) <br>중지된 미디에이션 삭제 <br>샘플 프로젝트 업데이트 <br>|
+| 버전                       | 내용                                                                                                   |
+|--------------------------|------------------------------------------------------------------------------------------------------|
+| 5.1.5<br/>(2023.07.06)   | 샘플앱 targetSdkVersion 33 업데이트<br>구글 play-service-ads version update 및 interface 수정, 모펍 제거<br>         |
+| 5.1.4<br/>(2023.04.20)   | 샘플앱 targetSdkVersion 31 업데이트<br>광고 API 도메인 수정<br>                                                    |
+| 5.1.2<br/>(2020.10.14)   | 샘플앱 targetSdkVersion 29 업데이트<br>애드립SDK 내에서 사용중이었던 non-SDK interface 수정<br>                           |
+| 5.1.1<br/>(2019.10.22)   | AOS 8.0(Oreo) 버전에서 일부 전면배너 노출 이슈 등 SDK 버그 픽스<br>Mobfox 라이브러리 연동 이슈 수정<br/>                           |
+| 5.1.0.0<br/>(2019.08.20) | 300X250(하프 배너) 광고 영역 추가<br>SDK 내부 개선<br/>                                                            |
+| 5.0.0.2<br/>(2019.04.05) | 구글 플레이스토어 앱 마켓 랜딩 개선<br>구형 단말기에서 전면배너 뷰의 잘림현상 개선<br>같은 플랫폼에서 광고가 연속적으로 노출될 때 리스너를 다시 주지 않는 현상 수정<br> |
+| 5.0.0.1<br/>(2018.12.10) | 이용자 단말로부터 수집하는 데이터 항목 축소<br>                                                                         |
+| 5.0.0.0<br/>(2018.06.12) | 미디에이션 워터폴 방식 변경(광고 노출 성공하는 경우 스케쥴 index 초기화) <br>중지된 미디에이션 삭제 <br>샘플 프로젝트 업데이트 <br>                  |
 
 # ADLib AOS SDK 적용 가이드
 
@@ -30,7 +31,6 @@
 |Inmobi|v9.1.1|<a href="http://www.inmobi.com/products/sdk/" target="_blank">다운로드</a>|
 |MillennialMedia|v6.8.3|<a href="http://docs.onemobilesdk.aol.com/android-ad-sdk/" target="_blank">다운로드</a>|
 |Mobfox|v3.6.9|<a href="https://github.com/mobfox/MobFox-Android-SDK" target="_blank">다운로드</a>|
-|Mopub|v5.6.0|<a href="https://developers.mopub.com/docs/android/getting-started/" target="_blank">다운로드</a>|
 |T-ad(Syrup Ad/Dawin Click)|v3.16.7|<a href="https://click.dawin.tv/poc/#/sdk" target="_blank">다운로드</a>|
 |TNK|v6.61|<a href="http://docs.tnkad.net/tnk-ad-sdk/sdk-guide" target="_blank">다운로드</a>|
 |Mezzo MANPLUS|v200|<a href="https://publisher.man-plus.com/Service/about/about_aplus_advertiser" target="_blank">다운로드</a>|
@@ -71,11 +71,11 @@ dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation 'com.android.support:multidex:1.0.3'
   implementation 'com.google.android.gms:play-services-base:16.1.0'
-  implementation 'com.google.android.gms:play-services-ads:17.2.0'
+  implementation 'com.google.android.gms:play-services-ads:22.1.0'
 }
 ```
 - 'com.android.support:multidex:1.0.3' : 안드로이드의 메서드 제한 오류를 해결하기 위한 라이브러리 추가.
-- 'com.google.android.gms:play-services-base:16.1.0', 'com.google.android.gms:play-services-ads:17.2.0' : 안드로이드에서 광고 설정에 필요한 설정입니다. 미디에이션을 사용한다면 각 플랫폼 가이드에 따라 추가해주시기 바랍니다
+- 'com.google.android.gms:play-services-base:16.1.0', 'com.google.android.gms:play-services-ads:22.1.0' : 안드로이드에서 광고 설정에 필요한 설정입니다. 미디에이션을 사용한다면 각 플랫폼 가이드에 따라 추가해주시기 바랍니다
 
 #### 단계3. AndroidManifest 설정
 ```XML
@@ -159,7 +159,6 @@ private void bindPlatform() {
     AdlibConfig.getInstance().bindPlatform("MEZZO", "test.adlib.project.ads.SubAdlibAdViewMezzo");
     AdlibConfig.getInstance().bindPlatform("MMEDIA", "test.adlib.project.ads.SubAdlibAdViewMMedia");
     AdlibConfig.getInstance().bindPlatform("MOBFOX", "test.adlib.project.ads.SubAdlibAdViewMobfox");
-    AdlibConfig.getInstance().bindPlatform("MOPUB", "test.adlib.project.ads.SubAdlibAdViewMopub");
     AdlibConfig.getInstance().bindPlatform("TAD", "test.adlib.project.ads.SubAdlibAdViewTAD");
     AdlibConfig.getInstance().bindPlatform("TNK", "test.adlib.project.ads.SubAdlibAdViewTNK");
 }
@@ -285,26 +284,12 @@ adlibManager.loadFullInterstitialAd(this, new Handler() {
 ### 다이얼로그 광고
 
 - 애드립에서 제공되는 다이얼로그 형태의 광고
-
-<div>
-	<table style="width:100%">
-		<tbody>
-			<tr>
-				<td style="border:0;">
-					<img src="http://developer.adlibr.com/share/img/sdk_and_dialog.png" width=300px>
-				</td>
-				<td class="dialog_tdata" style="border:0;">
-					Activity에서 requestAdDialog() 매서드를 통해 광고를 요청합니다.<br><br>
-					이후 광고 노출이 필요한 시점에 showAdDialog() 메서드를 통해 dialog를 이용하여 광고를 노출할 수 있습니다.<br><br>
-					AdlibDialogAdListener() 로 버튼 액션에 대한 기능을 추가할 수 있습니다.<br><br>
-					자세한 내용은 샘플 프로젝트 AdlibTestProjectActivity.java 파일을 참고해주세요. <br>
-					샘플 프로젝트에서는 종료 대화상자 광고를 예시로 구현하였습니다.<br><br>
-					(종료 dialog 광고는 세로 화면일 경우에만 적용됩니다.)
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+	- Activity에서 requestAdDialog() 매서드를 통해 광고를 요청합니다.
+	- 이후 광고 노출이 필요한 시점에 showAdDialog() 메서드를 통해 dialog를 이용하여 광고를 노출할 수 있습니다.
+    - AdlibDialogAdListener() 로 버튼 액션에 대한 기능을 추가할 수 있습니다.
+    - 자세한 내용은 샘플 프로젝트 AdlibTestProjectActivity.java 파일을 참고해주세요.
+    - 샘플 프로젝트에서는 종료 대화상자 광고를 예시로 구현하였습니다.
+    - 종료 dialog 광고는 세로 화면일 경우에만 적용됩니다.
 
 #### 단계1. 광고 요청
 ```java

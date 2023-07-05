@@ -20,7 +20,6 @@ allprojects {
 
         maven { url "https://jitpack.io" } // MobFox sdk
         maven { url 'https://devrepo.kakao.com/nexus/content/groups/public/' } // adfit
-        maven { url "https://s3.amazonaws.com/moat-sdk-builds" }  // mopub
         maven { url 'https://maven.google.com' } // necessary for Android API 26
 
         // cauly
