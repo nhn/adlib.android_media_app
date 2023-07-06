@@ -71,11 +71,11 @@ dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation 'com.android.support:multidex:1.0.3'
   implementation 'com.google.android.gms:play-services-base:16.1.0'
-  implementation 'com.google.android.gms:play-services-ads:17.2.0'
+  implementation 'com.google.android.gms:play-services-ads:22.1.0'
 }
 ```
 - 'com.android.support:multidex:1.0.3' : 안드로이드의 메서드 제한 오류를 해결하기 위한 라이브러리 추가.
-- 'com.google.android.gms:play-services-base:16.1.0', 'com.google.android.gms:play-services-ads:17.2.0' : 안드로이드에서 광고 설정에 필요한 설정입니다. 미디에이션을 사용한다면 각 플랫폼 가이드에 따라 추가해주시기 바랍니다
+- 'com.google.android.gms:play-services-base:16.1.0', 'com.google.android.gms:play-services-ads:22.1.0' : 안드로이드에서 광고 설정에 필요한 설정입니다. 미디에이션을 사용한다면 각 플랫폼 가이드에 따라 추가해주시기 바랍니다
 
 #### 단계3. AndroidManifest 설정
 ```XML
@@ -284,26 +284,12 @@ adlibManager.loadFullInterstitialAd(this, new Handler() {
 ### 다이얼로그 광고
 
 - 애드립에서 제공되는 다이얼로그 형태의 광고
-
-<div>
-	<table style="width:100%">
-		<tbody>
-			<tr>
-				<td style="border:0;">
-					<img src="http://developer.adlibr.com/share/img/sdk_and_dialog.png" width=300px>
-				</td>
-				<td class="dialog_tdata" style="border:0;">
-					Activity에서 requestAdDialog() 매서드를 통해 광고를 요청합니다.<br><br>
-					이후 광고 노출이 필요한 시점에 showAdDialog() 메서드를 통해 dialog를 이용하여 광고를 노출할 수 있습니다.<br><br>
-					AdlibDialogAdListener() 로 버튼 액션에 대한 기능을 추가할 수 있습니다.<br><br>
-					자세한 내용은 샘플 프로젝트 AdlibTestProjectActivity.java 파일을 참고해주세요. <br>
-					샘플 프로젝트에서는 종료 대화상자 광고를 예시로 구현하였습니다.<br><br>
-					(종료 dialog 광고는 세로 화면일 경우에만 적용됩니다.)
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+	- Activity에서 requestAdDialog() 매서드를 통해 광고를 요청합니다.
+	- 이후 광고 노출이 필요한 시점에 showAdDialog() 메서드를 통해 dialog를 이용하여 광고를 노출할 수 있습니다.
+    - AdlibDialogAdListener() 로 버튼 액션에 대한 기능을 추가할 수 있습니다.
+    - 자세한 내용은 샘플 프로젝트 AdlibTestProjectActivity.java 파일을 참고해주세요.
+    - 샘플 프로젝트에서는 종료 대화상자 광고를 예시로 구현하였습니다.
+    - 종료 dialog 광고는 세로 화면일 경우에만 적용됩니다.
 
 #### 단계1. 광고 요청
 ```java
