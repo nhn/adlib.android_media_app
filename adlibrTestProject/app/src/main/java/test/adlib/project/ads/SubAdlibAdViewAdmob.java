@@ -53,6 +53,26 @@ public class SubAdlibAdViewAdmob extends SubAdlibAdViewCore {
 
         // 광고 뷰의 위치 속성을 제어할 수 있습니다.
         this.setGravity(Gravity.CENTER);
+        ad.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                super.onAdFailedToLoad(loadAdError);
+                bGotAd = true;
+                failed();
+            }
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                bGotAd = true;
+                queryAd();
+                // 광고를 받아왔으면 이를 알려 화면에 표시합니다.
+                gotAd();
+            }
+
+            @Override
+            public void onAdOpened() {
+            }
+        });
     }
 
     // 스케줄러에의해 자동으로 호출됩니다.
