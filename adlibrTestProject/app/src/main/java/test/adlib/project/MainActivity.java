@@ -158,7 +158,7 @@ public class MainActivity extends Activity {
 
         // 쓰지 않을 광고 플랫폼은 삭제해주세요.
         AdlibConfig.getInstance().bindPlatform("ADMIXER", "test.adlib.project.ads.SubAdlibAdViewAdmixer");
-        AdlibConfig.getInstance().bindPlatform("ADAM", "test.adlib.project.ads.SubAdlibAdViewAdam");
+        AdlibConfig.getInstance().bindPlatform("ADFIT", "test.adlib.project.ads.SubAdlibAdViewAdam");
         AdlibConfig.getInstance().bindPlatform("ADMOB", "test.adlib.project.ads.SubAdlibAdViewAdmob");
         AdlibConfig.getInstance().bindPlatform("AMAZON", "test.adlib.project.ads.SubAdlibAdViewAmazon");
         AdlibConfig.getInstance().bindPlatform("CAULY", "test.adlib.project.ads.SubAdlibAdViewCauly");

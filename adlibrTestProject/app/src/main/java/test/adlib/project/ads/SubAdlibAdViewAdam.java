@@ -18,7 +18,7 @@ public class SubAdlibAdViewAdam extends SubAdlibAdViewCore {
     protected boolean bGotAd = false;
 
     // 여기에 ADAM ID 를 입력하세요.
-    protected String adfitID = "Adam_ID";
+    protected String adfitID = "107cZ0IT1329248764b";
     protected String adfitID_mrect = "Adam_ID";
 
     public SubAdlibAdViewAdam(Context context) {
