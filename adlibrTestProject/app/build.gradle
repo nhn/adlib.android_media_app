@@ -25,6 +25,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // ADLIB Library
+    implementation "com.nhnace:adlib:1.0.2"
+
     implementation 'com.google.android.gms:play-services-base:16.1.0'
     implementation 'androidx.multidex:multidex:2.0.0'
 

@@ -12,8 +12,8 @@ import com.millennialmedia.InterstitialAd;
 import com.millennialmedia.InterstitialAd.InterstitialErrorStatus;
 import com.millennialmedia.MMException;
 import com.millennialmedia.MMSDK;
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 public class SubAdlibAdViewMMedia extends SubAdlibAdViewCore {
 	

@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.mocoplex.adlib.AdlibConfig;
+import com.nhnace.adlib.AdlibConfig;
 
 import java.util.ArrayList;
 

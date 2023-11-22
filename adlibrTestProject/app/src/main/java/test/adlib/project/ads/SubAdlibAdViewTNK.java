@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 import com.tnkfactory.ad.TnkAdListener;
 import com.tnkfactory.ad.TnkSession;
 

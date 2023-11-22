@@ -15,8 +15,8 @@ import com.inmobi.ads.InMobiInterstitial;
 import com.inmobi.ads.listeners.BannerAdEventListener;
 import com.inmobi.ads.listeners.InterstitialAdEventListener;
 import com.inmobi.sdk.InMobiSdk;
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 import java.util.Map;
 

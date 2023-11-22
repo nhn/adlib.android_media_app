@@ -18,8 +18,8 @@
 
 # 아래는 애드립 사용을 위한 필수 설정입니다.
 
--keep class com.mocoplex.adlib.** { *; }
--dontwarn com.mocoplex.adlib.**
+-keep class com.nhnace.adlib.** { *; }
+-dontwarn com.nhnace.adlib.**
 
 # 빌드 SDK 버전이 킷캣(Android 19) 이하 일 경우 추가해주세요.
 -dontwarn android.os.Build

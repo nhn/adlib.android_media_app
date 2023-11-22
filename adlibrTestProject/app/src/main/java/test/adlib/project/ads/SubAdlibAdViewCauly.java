@@ -12,8 +12,8 @@ import com.fsn.cauly.CaulyAdInfoBuilder;
 import com.fsn.cauly.CaulyAdView;
 import com.fsn.cauly.CaulyInterstitialAd;
 import com.fsn.cauly.CaulyInterstitialAdListener;
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 // 자세한 세부 내용은 CAULY SDK 개발 문서를 참조해주세요.
 public class SubAdlibAdViewCauly extends SubAdlibAdViewCore implements com.fsn.cauly.CaulyAdViewListener {

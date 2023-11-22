@@ -13,8 +13,8 @@ import com.facebook.ads.AdSize;
 import com.facebook.ads.AdView;
 import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 public class SubAdlibAdViewFacebook extends SubAdlibAdViewCore {
 

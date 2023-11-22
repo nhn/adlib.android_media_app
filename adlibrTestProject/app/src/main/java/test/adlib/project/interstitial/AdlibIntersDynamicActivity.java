@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.mocoplex.adlib.AdlibManager;
+import com.nhnace.adlib.AdlibManager;
 
 import test.adlib.project.R;
 import test.adlib.project.TestProjectConstants;

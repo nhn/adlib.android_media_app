@@ -13,7 +13,7 @@ import com.amazon.device.ads.AdListener;
 import com.amazon.device.ads.AdProperties;
 import com.amazon.device.ads.AdRegistration;
 import com.amazon.device.ads.AdSize;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 public class SubAdlibAdViewAmazon extends SubAdlibAdViewCore {
 	

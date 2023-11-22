@@ -7,7 +7,7 @@ import com.mezzomedia.man.AdConfig;
 import com.mezzomedia.man.AdListener;
 import com.mezzomedia.man.data.AdData;
 import com.mezzomedia.man.view.AdManView;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 public class SubAdlibAdViewMezzo extends SubAdlibAdViewCore {
     protected AdManView adView = null;

@@ -8,9 +8,9 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.mocoplex.adlib.AdlibAdViewContainer;
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibAdViewContainer;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 import test.adlib.project.R;
 import test.adlib.project.TestProjectConstants;
@@ -69,7 +69,7 @@ public class AdlibHalfMediationActivity extends Activity {
         // 새로 로드하는 경우 반드시 기존 광고뷰를 삭제하고 다시 바인드 해주세요.
 
         // 동적으로 adview 를 생성합니다.
-        AdlibAdViewContainer avc = new com.mocoplex.adlib.AdlibAdViewContainer(this);
+        AdlibAdViewContainer avc = new com.nhnace.adlib.AdlibAdViewContainer(this);
         ViewGroup.LayoutParams p = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         avc.setLayoutParams(p);
 

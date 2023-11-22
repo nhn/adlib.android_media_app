@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.ads.*;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 import org.jetbrains.annotations.NotNull;
 
 public class SubAdlibAdViewAdmob extends SubAdlibAdViewCore {

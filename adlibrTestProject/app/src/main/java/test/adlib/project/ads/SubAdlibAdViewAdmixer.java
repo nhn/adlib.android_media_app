@@ -12,8 +12,8 @@ import com.admixer.ads.AdView;
 import com.admixer.ads.AdViewListener;
 import com.admixer.ads.InterstitialAd;
 import com.admixer.ads.InterstitialAdListener;
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 public class SubAdlibAdViewAdmixer extends SubAdlibAdViewCore {
 	

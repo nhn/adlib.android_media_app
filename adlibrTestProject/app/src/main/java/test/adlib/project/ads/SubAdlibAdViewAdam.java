@@ -9,8 +9,8 @@ import android.view.View;
 
 import com.kakao.adfit.ads.AdListener;
 import com.kakao.adfit.ads.ba.BannerAdView;
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 public class SubAdlibAdViewAdam extends SubAdlibAdViewCore {
 

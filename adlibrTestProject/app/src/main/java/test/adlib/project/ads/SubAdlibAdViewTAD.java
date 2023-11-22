@@ -7,8 +7,8 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.Gravity;
 
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 import com.skplanet.tad.AdInterstitial;
 import com.skplanet.tad.AdInterstitialListener;
 import com.skplanet.tad.AdListener;

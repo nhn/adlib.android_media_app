@@ -1,15 +1,9 @@
 # SDK Version History
 
-| 버전                       | 내용                                                                                                   |
-|--------------------------|------------------------------------------------------------------------------------------------------|
-| 5.1.5<br/>(2023.07.06)   | 샘플앱 targetSdkVersion 33 업데이트<br>구글 play-service-ads version update 및 interface 수정, 모펍 제거<br>         |
-| 5.1.4<br/>(2023.04.20)   | 샘플앱 targetSdkVersion 31 업데이트<br>광고 API 도메인 수정<br>                                                    |
-| 5.1.2<br/>(2020.10.14)   | 샘플앱 targetSdkVersion 29 업데이트<br>애드립SDK 내에서 사용중이었던 non-SDK interface 수정<br>                           |
-| 5.1.1<br/>(2019.10.22)   | AOS 8.0(Oreo) 버전에서 일부 전면배너 노출 이슈 등 SDK 버그 픽스<br>Mobfox 라이브러리 연동 이슈 수정<br/>                           |
-| 5.1.0.0<br/>(2019.08.20) | 300X250(하프 배너) 광고 영역 추가<br>SDK 내부 개선<br/>                                                            |
-| 5.0.0.2<br/>(2019.04.05) | 구글 플레이스토어 앱 마켓 랜딩 개선<br>구형 단말기에서 전면배너 뷰의 잘림현상 개선<br>같은 플랫폼에서 광고가 연속적으로 노출될 때 리스너를 다시 주지 않는 현상 수정<br> |
-| 5.0.0.1<br/>(2018.12.10) | 이용자 단말로부터 수집하는 데이터 항목 축소<br>                                                                         |
-| 5.0.0.0<br/>(2018.06.12) | 미디에이션 워터폴 방식 변경(광고 노출 성공하는 경우 스케쥴 index 초기화) <br>중지된 미디에이션 삭제 <br>샘플 프로젝트 업데이트 <br>                  |
+| 버전                     | 내용                                                                                            |
+|------------------------|-----------------------------------------------------------------------------------------------|
+| 1.0.2<br/>(2023.11.22) | ADLIB SDK Repackaging|
+| Old Version            | old_version Branch 에서 확인 가능<br>old_history.md 에서 확인 가능<br> |
 
 # ADLib AOS SDK 적용 가이드
 
@@ -48,7 +42,15 @@
 #### 단계1. Gradle 설정
 - 애드립에서 제공하는 샘플 프로젝트는 Gradle 환경의 안드로이드 스튜디오에서 빌드하기에 최적화 되어 있습니다.
 ```XML
-[build.gradle]
+[project level - build.gradle]
+buildscript {
+   repositories {
+      mavenCentral()
+   }
+}
+
+
+[app module level - build.gradle]
 android {
   defaultConfig {
     ...
@@ -68,7 +70,13 @@ android {
 - 광고 설정을 위해 gradle 파일의 dependencies를 추가합니다. 
 ```XML
 dependencies {
+  // gradle 로 연동 (권장)
+  implementation 'com.nhnace.adlib:1.0.2'
+
+  // aar, jar 를 libs 에 넣어 직접 참조 하는 경우
   implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+  // 공통 참조
   implementation 'com.android.support:multidex:1.0.3'
   implementation 'com.google.android.gms:play-services-base:16.1.0'
   implementation 'com.google.android.gms:play-services-ads:22.1.0'
@@ -89,7 +97,7 @@ dependencies {
   android:label="@string/app_name">
 
   <activity
-    android:name="com.mocoplex.adlib.AdlibDialogActivity"
+    android:name="com.nhnace.adlib.AdlibDialogActivity"
     android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
     android:theme="@android:style/Theme.Translucent"/>
 </application>

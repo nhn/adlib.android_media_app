@@ -9,8 +9,8 @@ import android.view.Gravity;
 import com.mobfox.sdk.banner.Banner;
 import com.mobfox.sdk.interstitial.Interstitial;
 import com.mobfox.sdk.interstitial.InterstitialListener;
-import com.mocoplex.adlib.AdlibManager;
-import com.mocoplex.adlib.SubAdlibAdViewCore;
+import com.nhnace.adlib.AdlibManager;
+import com.nhnace.adlib.SubAdlibAdViewCore;
 
 public class SubAdlibAdViewMobfox extends SubAdlibAdViewCore {
 
