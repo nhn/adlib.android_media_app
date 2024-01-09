@@ -168,6 +168,12 @@
             android:name=".half.AdlibHalfMediationActivity"
             android:screenOrientation="portrait"/>
 
+        <!-- AD Mixersdk - Activity 형식의 전체 화면 랜딩을 지원하기 위해선 아래의 설정으로 추가 -->
+        <activity
+            android:name="com.nasmedia.admixer.common.videoads.InterstitialVideoAdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="false" />
+
     </application>
 
 </manifest>
